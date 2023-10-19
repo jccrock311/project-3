@@ -1,5 +1,5 @@
 const map = L.map('map', {
-    center: [-29,50, 145],
+    center: [37, -95.7],
     zoom: 4
 });
 
