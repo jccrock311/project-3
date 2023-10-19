@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forest Fire Analysis</title>
+    <link rel="icon" href="../Images/fire_logo.png"> <!-- Added logo -->
 
     <!-- External scripts -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -20,19 +21,27 @@
 
 <body>
     <div>
-        <header>Wildfire Analysis</header>
+        <header>Wildfire Awareness:</header>
+            <h1>The Varying Causes, Costs, and Concerns (2013-2023)</h1>
+        <hr>
         <div id="map"></div>
         <hr>
         <div id="selection_row">
-            <div id="selectTitle">Select a State for Fire Details:</div>
-            <select id="selectState" onchange="optionChanged(this.value)">
-                <option value="USA">United States</option>
-            </select>
+            <label for="states">Choose State for Fire Analysis:</label>
+                <select id="state" name="states"></select>
         </div>
-
+        <hr>
+        <section>
+            <article class="first-footer">
+                <footer class="footer">Project developed by: Evan, Gabriella, Jonathan, Juliana</footer>
+            </article>
+            <article class="second-footer">
+                <footer class="footer">Data Sources Here: <a href="https://docs.google.com/document/d/11EFZbRMMOHIQnChSnkdUt8v8uDqvKjthD06gNujhcWQ/edit?pli=1">
+                    README</a></footer>
+            </article>
+        </section>
     </div>
 
-        </div>
 
             <!-- Holds our map -->
             <div id="map-id"></div>

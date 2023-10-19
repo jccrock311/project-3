@@ -1,33 +1,67 @@
-*{
-    margin: 0;
-    padding: 0;
-    font-family: "Gill Sans", sans-serif;
-    box-sizing: border-box;
-    text-align: center;
+html {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #222;
+    color: #eee;
 }
 
 body {
     background: #080808;
     color: #f48404;
+    background-image: url(../css/fire_background.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 header {
     width: 100%;
-    height: 100vh;
-    background-image: url(../css/fire_background.jpg);
-    background-size: cover;
-    background-position: center;
     font-size: 50px;
     font-style: oblique;
-    text-shadow: 
-    -1px -1px 0 #5b1dec,
-    1px -1px 0 #5b1dec,
-    -1px 1px 0 #5b1dec,
-    1px 1px 0 #5b1dec; 
+    text-align: center;
+    text-shadow: -1px -1px 0 #5b1dec, 1px -1px 0 #5b1dec, -1px 1px 0 #5b1dec, 1px 1px 0 #5b1dec; 
+}
+
+h1 {
+    width: 100%;
+    font-size: 30px;
+    font-style: oblique;
+    text-align: center;
+    text-shadow: -1px -1px 0 #5b1dec, 1px -1px 0 #5b1dec, -1px 1px 0 #5b1dec, 1px 1px 0 #5b1dec; 
 }
 
 #map {
     margin: auto;
     height: 600px;
-  }
+}
 
+@media screen and (max-width: 1000px) {
+    #map {
+        width: 95%;
+    }
+}
+  
+@media screen and (min-width: 1001px) {
+    #map {
+        width: 980px;
+    }
+}
+
+#selection_row {
+    width: 100%;
+    font-size: 20px;
+    font-style: bold;
+    text-align: center;
+    text-shadow: -0.5px -0.5px 0 #5b1dec, 0.5px -0.5px 0 #5b1dec, -0.5px 0.5px 0 #5b1dec, 0.5px 0.5px 0 #5b1dec; 
+}
+
+.dropdown { 
+    display: inline-block; 
+    position: relative; 
+} 
+
+section {
+    justify-content: center;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 1em 0em;
+}

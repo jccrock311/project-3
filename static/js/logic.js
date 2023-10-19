@@ -35,26 +35,28 @@ const allFires = "https://raw.githubusercontent.com/jccrock311/project-3/main/da
 let fireData;
 let referenceData;
 
-// Filters the full data to a given state
-function createFilterData(state) {
-    let filterData;
+function setSelectOptions() {
+    let stateSelect = document.getElementById('state');
 
-    if (state == 'USA') {
-        filterData = fireData;
-    } else {
-        filterData = fireData.filter(fire => fire.state == state);
+    for (let i=0; i<states.length; i++) {
+        let option = document.createElement("option");
+        option.text = states[i].name;
+        option.value = states[i].abbreviation;
+        stateSelect.addEventListener(option);
     }
 }
 
-// Trying to figure out how to add all states to drop down menu
-function setSelectOptions() {
-    let dropDown = d3.select("#selectState");
-    states.forEach(state => {
-        dropDown.append("option")
-            .text(state.name)
-            .attr("value", state.abbreviation)
-    });
-}
+
+// Filters the full data to a given state
+//function createFilterData(state) {
+    //let filterData;
+
+    //if (state == 'USA') {
+        //filterData = fireData;
+    //} else {
+        //filterData = fireData.filter(fire => fire.state == state);
+    //}
+//}
 
 
 
