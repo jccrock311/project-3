@@ -212,3 +212,12 @@ const states = [
         "abbreviation": "WY"
     },
 ];
+
+var stateSelect = document.getElementById('state');
+
+for(var i = 0; i < states.length; i++) {
+    var option = document.createElement("option");
+    option.text = states[i].name;
+    option.value = states[i].abbreviation;
+    stateSelect.add(option);
+}
