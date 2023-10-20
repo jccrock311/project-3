@@ -15,10 +15,12 @@ body {
 
 header {
     width: 100%;
+    color:#5b1dec;
     font-size: 50px;
     font-style: oblique;
     text-align: center;
-    text-shadow: -1px -1px 0 #5b1dec, 1px -1px 0 #5b1dec, -1px 1px 0 #5b1dec, 1px 1px 0 #5b1dec; 
+    text-shadow: -1px -1px 0 #f48404, 1px -1px 0 #f48404, -1px 1px 0 #f48404, 1px 1px 0 #f48404; 
+
 }
 
 h1 {
@@ -48,7 +50,7 @@ h1 {
 
 #selection_row {
     width: 100%;
-    font-size: 20px;
+    font-size: 25px;
     font-style: bold;
     text-align: center;
     text-shadow: -0.5px -0.5px 0 #5b1dec, 0.5px -0.5px 0 #5b1dec, -0.5px 0.5px 0 #5b1dec, 0.5px 0.5px 0 #5b1dec; 

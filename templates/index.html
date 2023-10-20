@@ -26,10 +26,15 @@
         <hr>
         <div id="map"></div>
         <hr>
-        <div id="selection_row">
-            <label for="states">Choose State for Fire Analysis:</label>
-                <select id="state" name="states"></select>
+        <div id="selection_row">   
+            <label for="years">Choose Year for Fire Analysis:</label>
+                <select id="year" name="years"></select>
         </div>
+        <pre>
+        <div class="plot" id="Acreage"></div>
+        <div class="plot" id="Pie"></div>
+        <div class="plot" id="Bubble"></div>
+        </pre>
         <hr>
         <section>
             <article class="first-footer">
@@ -48,6 +53,6 @@
     
             <!-- Our Personal JS -->
             <script type="text/javascript" src="../static/js/logic.js"></script>
-            <script type="text/javascript" src="../static/js/states.js"></script>
+            <script type="text/javascript" src="../static/js/years.js"></script>
 </body>
 </html>
