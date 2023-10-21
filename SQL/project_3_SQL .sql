@@ -12,15 +12,14 @@ create table Suppression_Costs_Federal_Firefighting_Costs (
 	"Forest Service ($)" int8,
 	"DOI Agencies ($)" int8,
 	"Total ($)" int8,
-	Constraint "pk_HumanCausedFires" primary key ("Year")
+	primary key ("Year")
 );
 
 	
 create table Sea_level_grouped_by_years(
 	"Year" int,
 	Measure varchar,
-	"Change in MSL Value" int,
-	Constraint "pk_HumanCausedFires" primary key ("Year")
+	"Change in MSL Value" int
 );
 
 create table USA_census_population_estimate (
