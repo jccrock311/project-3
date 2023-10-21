@@ -31,6 +31,10 @@ h1 {
     text-shadow: -1px -1px 0 #5b1dec, 1px -1px 0 #5b1dec, -1px 1px 0 #5b1dec, 1px 1px 0 #5b1dec; 
 }
 
+.chartBox {
+    width: 700px;
+}
+
 #map {
     margin: auto;
     height: 600px;

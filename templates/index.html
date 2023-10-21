@@ -9,11 +9,15 @@
     <!-- External scripts -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
     <!-- Leaflet CSS, JavaScript Code, and Heatmap Library -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script type="text/javascript" src="static/js/leaflet-heat.js"></script>
+
+    <!-- Papaparse Plug-in -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
     <!-- Our Personal CSS -->
     <link rel="stylesheet" href="../static/css/style.css">
@@ -27,11 +31,16 @@
         <div id="map"></div>
         <hr>
         <div id="selection_row">   
+            <input type="file" id="uploadfile" accept=".csv">
+                <button id="uploadconfirm"> Upload File</button>
+                <pre>
             <label for="years">Choose Year for Fire Analysis:</label>
-                <select id="year" name="years"></select>
+            <select id="year" name="years">
+                <option value="2012">2012</option>
+            </select>
         </div>
         <pre>
-        <div class="plot" id="Acreage"></div>
+        <div class="chartBox" id="Acreage"></div>
         <div class="plot" id="Pie"></div>
         <div class="plot" id="Bubble"></div>
         </pre>
@@ -54,5 +63,6 @@
             <!-- Our Personal JS -->
             <script type="text/javascript" src="../static/js/logic.js"></script>
             <script type="text/javascript" src="../static/js/years.js"></script>
+            <script type="text/javascript" src="../static/js/leaflet-heat.js"></script>
 </body>
 </html>
