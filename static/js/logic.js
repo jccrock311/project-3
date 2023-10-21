@@ -1,12 +1,93 @@
 const allFires = "https://raw.githubusercontent.com/jccrock311/project-3/main/data/merged_fire_archive.csv";
+const humanFires = "https://raw.githubusercontent.com/jccrock311/project-3/main/data/Human-caused%20wildfires%20-%20Number%20of%20fires%20caused.csv";
+const humanAcreage = "https://raw.githubusercontent.com/jccrock311/project-3/main/data/Human-caused%20wildfires%20-Affected%20acreage.csv";
+const natureFires = "https://raw.githubusercontent.com/jccrock311/project-3/main/data/Lightning-caused%20wildfires%20-%20Number%20of%20fires%20caused.csv";
+const natureAcreage = "https://raw.githubusercontent.com/jccrock311/project-3/main/data/Lightning-caused%20wildfires%20-%20Affected%20acreage.csv";
 
 let fireData;
 let referenceData;
 
+function createFilterData(years) {
+    let filterData;
+
+    if (years == 2011) {
+        filterData = fireData;
+    } else {
+        filterData = fireData.filter(years => years == years);
+    }
+
+    let humanNatureFires = {
+        Humans: 0,
+        Nature: 0,
+    }
+
+    let humanNatureAcreage = {
+        Alaska: 0,
+        Northwest: 0,
+        NothernCalifornia: 0,
+        SouthernCalifornia: 0,
+        NothernRockies: 0,
+        GreatBasin: 0,
+        WesternGreatBasin: 0,
+        Southwest: 0,
+        RockyMountains: 0,
+        EasternArea: 0,
+        SouthernArea: 0,
+        //Total: 0
+    }
+
+    let regionFiresCost = {}
+
+    // loop through all the data calculate values our plots need
+    filterData.forEach(fire => {
+        if (fire.HumansCount >= 0) { humanNatureFires.Humans++ }
+        if (fire.NatureCount >= 0) { humanNatureFires.Nature++ }
+
+        humanNatureAcreage[fire.StatusTypeID]++;
+
+        // set operator data value
+        // if key does not exist yet, create it then increase count
+        regionFiresCost[fire.OperatorID] = regionFiresCost[fire.OperatorID] || 0;
+        regionFiresCost[fire.OperatorID]++;
+    });
+
+
+    // create Array of objects for operator data
+    let regionArray = [];
+    // fill array by looping through operator data
+    for (const [key, value] of Object.entries(regionFiresCost)) {
+        // select the correct operator from reference data
+        let operatorObject = referenceData.OperatorTypes.filter(operator => operator.ID == key)[0];
+        regionArray.push([operatorObject.Title, value]);
+    }
+    // sort Operator Data from highest to lowest (descending)
+    regionArray.sort((a, b) => b[1] - a[1]);
+
+
+    let calculatedData = {
+        TotalFires: humanNatureFires,
+        RegionFires: humanNatureAcreage,
+        RegionFires: regionArray
+    }
+
+    return calculatedData;
+}
+
+
 // function fireDataMap() {
 
-    //load CSV with d3
-    fireCoords = d3.csv(allFires);
+    //load CSVs with d3
+    let fireCoords = d3.csv(allFires);
+    //let humanFiresTotal = d3.csv(humanFires, function(data){
+    //     console.log(data)
+    // });
+    let humanFiresAcreage = d3.csv(humanAcreage);
+    let natureFiresTotal = d3.csv(natureFires);
+    let natureFiresAcreage = d3.csv(natureAcreage);
+
+    //let humanTotal = 
+
+//--------------------------------------------------------------------------------------------------------------------------
 
     // Creating map object
     const map = L.map('map', {
@@ -57,7 +138,7 @@ let referenceData;
 
     // Humans vs. Nature (Lightning) plot
     let humanTrace = {
-        x: ["Humans"],
+        x: ["whatever"],
         y: [3],
         type: 'bar',
         text: [],
@@ -220,5 +301,5 @@ let referenceData;
 
 
 
-fireData();
+//fireData();
 
