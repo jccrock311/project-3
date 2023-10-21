@@ -1,5 +1,7 @@
 from flask import Flask, render_template, jsonify
 import sqlite3
+import psycopg2
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -7,14 +9,15 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route("/api/data")
-def get_data():
-    conn = sqlite3.connect("")
-    cursor = conn.cursor()
-    query = "SELECT * FROM <insert DB here>"
-    data = cursor.execute(query).fetchall()
+@app.route("/api/latitude_and_longitude")
+def latlon():
+    conn = psycopg2.connect(database="Wildfire data", user="postgres", password="postgres", port="5432")
+    query = "SELECT * FROM Latitude_and_Longitude"
+    data = pd.read_sql(query, conn)
     conn.close()
-    return jsonify(data)
+    return jsonify(data.to_json(orient="records"))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
