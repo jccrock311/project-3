@@ -26,21 +26,41 @@
 <body>
     <div>
         <header>Wildfire Awareness:</header>
-            <h1>The Varying Causes, Costs, and Concerns (2013-2023)</h1>
+            <h1>The Varying Causes, Costs, and Concerns of the 21st Century</h1>
         <hr>
         <div id="map"></div>
         <hr>
         <div id="selection_row">   
+            <label for="years">Choose Year and File for Fire Analysis:</label>
+            <select id="year" name="years">
+                <option value="---">---</option>
+            </select>
             <input type="file" id="uploadfile" accept=".csv">
                 <button id="uploadconfirm"> Upload File</button>
+                <a href="../data/Human-Nature-Wildfire-Totals.csv" download>Fires</a>
+                <label>|</label>
+                <a href="../data/Human-Nature-Acreage-Totals.csv" download>Acreages</a>
+                <hr>
+                <label>Choose U.S. Region:</label>
+                <p>
+                <button onclick=updateChart('AlaskaHuman')>Alaska</button>
+                <button onclick=updateChart('NorthwestHuman')>Northwest</button>
+                <button onclick=updateChart('NCaliHuman')>Northern California</button>
+                <button onclick=updateChart('SCaliHuman')>Southern California</button>
+                <button onclick=updateChart('NRockiesHuman')>Northern Rockies</button>
+                <button onclick=updateChart('GreatBasinHuman')>Great Basin</button>
+                <button onclick=updateChart('WGreatBasinHuman')>Western Great Basin</button>
+                <button onclick=updateChart('SouthwestHuman')>Southwest</button>
+                <button onclick=updateChart('RockyMountainsHuman')>Rocky Mountains</button>
+                <button onclick=updateChart('EAreaHuman')>Eastern Area</button>
+                <button onclick=updateChart('SAreaHuman')>Southern Area</button>
+                <button onclick=updateChart('TotalHuman')>Total</button>
                 <pre>
-            <label for="years">Choose Year for Fire Analysis:</label>
-            <select id="year" name="years">
-                <option value="2012">2012</option>
-            </select>
         </div>
         <pre>
-        <div class="chartBox" id="Acreage"></div>
+        <div class="chartBox"> 
+            <canvas id="myChart"></canvas>
+        </div>
         <div class="plot" id="Pie"></div>
         <div class="plot" id="Bubble"></div>
         </pre>
@@ -51,7 +71,7 @@
             </article>
             <article class="second-footer">
                 <footer class="footer">Data Sources<a href="https://docs.google.com/document/d/11EFZbRMMOHIQnChSnkdUt8v8uDqvKjthD06gNujhcWQ/edit?pli=1">
-                    Here</a></footer>
+                    HERE</a></footer>
             </article>
         </section>
     </div>

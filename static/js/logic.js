@@ -1,17 +1,49 @@
-const YearData = [];
-const AlaskaData = [];
-const NorthwestData = [];
-const NCaliData = [];
-const SCaliData = [];
-const NRockiesData = [];
-const GreatBasinData = [];
-const WGreatBasinData = [];
-const SouthwestData = [];
-const RockyMountainsData = [];
-const EAreaData = [];
-const SAreaData = [];
-const TotalData = [];
+// const humanFires = document.getElementById("../data/Human-caused wildfires - Number of fires caused.csv").value;
+// console.log(Papa.parse(humanFires))
 
+const YearData = [];
+const AlaskaHuman = [];
+const AlaskaNature = [];
+const NorthwestHuman= [];
+const NorthwestNature= [];
+const NCaliHuman = [];
+const NCaliNature = [];
+const SCaliHuman = [];
+const SCaliNature = [];
+const NRockiesHuman = [];
+const NRockiesNature = [];
+const GreatBasinHuman = [];
+const GreatBasinNature = [];
+const WGreatBasinHuman = [];
+const WGreatBasinNature = [];
+const SouthwestHuman = [];
+const SouthwestNature = [];
+const RockyMountainsHuman = [];
+const RockyMountainsNature = [];
+const EAreaHuman = [];
+const EAreaNature = [];
+const SAreaHuman = [];
+const SAreaNature = [];
+const TotalHuman = [];
+const TotalNature = [];
+
+
+
+// let fireData;
+
+// //filtering the year
+// // function createFilterData(year) {
+// //     let filterData;
+
+// //     if (year == "---") {
+// //         filterData = fireData;
+// //     } else {
+// //         filterData = fireData.filter(years => years == years);
+// //     }
+
+
+
+//import CSV
 const uploadconfirm = document.getElementById('uploadconfirm').
     addEventListener('click', () => {
         Papa.parse(document.getElementById('uploadfile').files[0],
@@ -25,60 +57,47 @@ const uploadconfirm = document.getElementById('uploadconfirm').
 
                 for (i=0; i<results.data.length; i++) {
                     YearData.push(results.data[i].Year);
-                    AlaskaData.push(results.data[i].Alaska);
-                    NorthwestData.push(results.data[i].Northwest);
-                    NCaliData.push(results.data[i].NorthernCalifornia);
-                    SCaliData.push(results.data[i].SouthernCalifornia);
-                    NRockiesData.push(results.data[i].NorthernRockies);
-                    GreatBasinData.push(results.data[i].GreatBasin);
-                    WGreatBasinData.push(results.data[i].WesternGreatBasin);
-                    SouthwestData.push(results.data[i].Southwest);
-                    RockyMountainsData.push(results.data[i].RockyMountains);
-                    EAreaData.push(results.data[i].EasternArea);
-                    SAreaData.push(results.data[i].SouthernArea);
-                    TotalData.push(results.data[i].Total);
+                    AlaskaHuman.push(results.data[i].AlaskaHuman);
+                    AlaskaNature.push(results.data[i].AlaskaNature);
+                    NorthwestHuman.push(results.data[i].NorthwestHuman);
+                    NorthwestNature.push(results.data[i].NorthwestNature);
+                    NCaliHuman.push(results.data[i].NorthernCaliforniaHuman);
+                    NCaliNature.push(results.data[i].NorthernCaliforniaNature);
+                    SCaliHuman.push(results.data[i].SouthernCaliforniaHuman);
+                    SCaliNature.push(results.data[i].SouthernCaliforniaNature);
+                    NRockiesHuman.push(results.data[i].NorthernRockiesHuman);
+                    NRockiesNature.push(results.data[i].NorthernRockiesNature);
+                    GreatBasinHuman.push(results.data[i].GreatBasinHuman);
+                    GreatBasinNature.push(results.data[i].GreatBasinNature);
+                    WGreatBasinHuman.push(results.data[i].WesternGreatBasinHuman);
+                    WGreatBasinNature.push(results.data[i].WesternGreatBasinNature);
+                    SouthwestHuman.push(results.data[i].SouthwestHuman);
+                    SouthwestNature.push(results.data[i].SouthwestNature);
+                    RockyMountainsHuman.push(results.data[i].RockyMountainsHuman);
+                    RockyMountainsNature.push(results.data[i].RockyMountainsNature);
+                    EAreaHuman.push(results.data[i].EasternAreaHuman);
+                    EAreaNature.push(results.data[i].EasternAreaNature);
+                    SAreaHuman.push(results.data[i].SouthernAreaHuman);
+                    SAreaNature.push(results.data[i].SouthernAreaNature);
+                    TotalHuman.push(results.data[i].TotalHuman);
+                    TotalNature.push(results.data[i].TotalNature);
                 }
-                console.log(YearData);
-                console.log(AlaskaData);
-                console.log(NorthwestData);
-                console.log(NCaliData);
-                console.log(SCaliData);
-                console.log(NRockiesData);
-                console.log(GreatBasinData);
-                console.log(WGreatBasinData);
-                console.log(SouthwestData);
-                console.log(RockyMountainsData);
-                console.log(EAreaData);
-                console.log(SAreaData);
-                console.log(TotalData);
             }
 
         });
     });
 
     const data = {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes'
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
+        labels: ['Humans', 'Nature'],
+            datasets: [
+                {
+                    label: ['Number of Human Fires', 'Number of Natural Fires'],
+                    data: [0, 0],
+                    backgroundColor: '#222',
+                    borderColor: ['#f48404', '#5b1dec'],
+                    borderWidth: [2, 2]
+                },
+            ]
     };
 
     const config = {
@@ -97,6 +116,60 @@ const uploadconfirm = document.getElementById('uploadconfirm').
         document.getElementById('myChart'),
         config
     );
+
+    function updateChart(label){
+        if (label === "AlaskaHuman") {
+            myChart.data.datasets[0].data = AlaskaHuman;
+            myChart.data.datasets[0].data = AlaskaNature;
+        }
+        if (label === "NorthwestHuman") {
+            myChart.data.datasets[0].data = NorthwestHuman;
+            myChart.data.datasets[0].data = NorthwestNature;
+        }
+        if (label === "NCaliData") {
+            myChart.data.datasets[0].data = NCaliHuman;
+            myChart.data.datasets[0].data = NCaliNature;
+        }
+        if (label === "SCaliData") {
+            myChart.data.datasets[0].data = SCaliHuman;
+            myChart.data.datasets[0].data = SCaliNature;
+        }
+        if (label === "NRockiesData") {
+            myChart.data.datasets[0].data = NRockiesHuman;
+            myChart.data.datasets[0].data = NRockiesNature;
+        }
+        if (label === "GreatBasinData") {
+            myChart.data.datasets[0].data = GreatBasinHuman;
+            myChart.data.datasets[0].data = GreatBasinNature;
+        }
+        if (label === "WGreatBasinData") {
+            myChart.data.datasets[0].data = WGreatBasinHuman;
+            myChart.data.datasets[0].data = WGreatBasinNature;
+        }
+        if (label === "SouthwestData") {
+            myChart.data.datasets[0].data = SouthwestHuman;
+            myChart.data.datasets[0].data = SouthwestNature;
+        }
+        if (label === "RockyMountainsData") {
+            myChart.data.datasets[0].data = RockyMountainsHuman;
+            myChart.data.datasets[0].data = RockyMountainsNature;
+        }
+        if (label === "EAreaData") {
+            myChart.data.datasets[0].data = EAreaHuman;
+            myChart.data.datasets[0].data = EAreaNature;
+        }
+        if (label === "SAreaData") {
+            myChart.data.datasets[0].data = SAreaHuman;
+            myChart.data.datasets[0].data = SAreaNature;
+        }
+        if (label === "TotalData") {
+            myChart.data.datasets[0].data = TotalHuman;
+            myChart.data.datasets[0].data = TotalNature;
+        }
+        
+        myChart.update();
+    };
+
 
 
 // //function firePlots() {
@@ -263,74 +336,42 @@ const uploadconfirm = document.getElementById('uploadconfirm').
     
 
 
-let fireData;
-let referenceData;
 
-function createFilterData(years) {
-    let filterData;
+    // let regionFiresCost = {}
 
-    if (years == 2012) {
-        filterData = fireData;
-    } else {
-        filterData = fireData.filter(years => years == years);
-    }
+    // // loop through all the data calculate values our plots need
+    // filterData.forEach(fire => {
+    //     if (fire.HumansCount >= 0) { humanNatureFires.Humans++ }
+    //     if (fire.NatureCount >= 0) { humanNatureFires.Nature++ }
 
-    let humanNatureFires = {
-        Humans: 0,
-        Nature: 0,
-    }
+    //     humanNatureAcreage[fire.StatusTypeID]++;
 
-    let humanNatureAcreage = {
-        Alaska: 0,
-        Northwest: 0,
-        NothernCalifornia: 0,
-        SouthernCalifornia: 0,
-        NothernRockies: 0,
-        GreatBasin: 0,
-        WesternGreatBasin: 0,
-        Southwest: 0,
-        RockyMountains: 0,
-        EasternArea: 0,
-        SouthernArea: 0,
-        //Total: 0
-    }
-
-    let regionFiresCost = {}
-
-    // loop through all the data calculate values our plots need
-    filterData.forEach(fire => {
-        if (fire.HumansCount >= 0) { humanNatureFires.Humans++ }
-        if (fire.NatureCount >= 0) { humanNatureFires.Nature++ }
-
-        humanNatureAcreage[fire.StatusTypeID]++;
-
-        // set operator data value
-        // if key does not exist yet, create it then increase count
-        regionFiresCost[fire.OperatorID] = regionFiresCost[fire.OperatorID] || 0;
-        regionFiresCost[fire.OperatorID]++;
-    });
+    //     // set operator data value
+    //     // if key does not exist yet, create it then increase count
+    //     regionFiresCost[fire.OperatorID] = regionFiresCost[fire.OperatorID] || 0;
+    //     regionFiresCost[fire.OperatorID]++;
+    // });
 
 
-    // create Array of objects for operator data
-    let regionArray = [];
-    // fill array by looping through operator data
-    for (const [key, value] of Object.entries(regionFiresCost)) {
-        // select the correct operator from reference data
-        let operatorObject = referenceData.OperatorTypes.filter(operator => operator.ID == key)[0];
-        regionArray.push([operatorObject.Title, value]);
-    }
-    // sort Operator Data from highest to lowest (descending)
-    regionArray.sort((a, b) => b[1] - a[1]);
+    // // create Array of objects for operator data
+    // let regionArray = [];
+    // // fill array by looping through operator data
+    // for (const [key, value] of Object.entries(regionFiresCost)) {
+    //     // select the correct operator from reference data
+    //     let operatorObject = referenceData.OperatorTypes.filter(operator => operator.ID == key)[0];
+    //     regionArray.push([operatorObject.Title, value]);
+    // }
+    // // sort Operator Data from highest to lowest (descending)
+    // regionArray.sort((a, b) => b[1] - a[1]);
 
 
-    let calculatedData = {
-        TotalFires: humanNatureFires,
-        RegionFires: humanNatureAcreage,
-        RegionFires: regionArray
-    }
+    // let calculatedData = {
+    //     TotalFires: humanNatureFires,
+    //     RegionFires: humanNatureAcreage,
+    //     RegionFires: regionArray
+    // }
 
-    return calculatedData;
-}
+    // return calculatedData;
 
 
 // function fireDataMap() {
