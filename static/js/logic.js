@@ -229,13 +229,90 @@ function updateChart(label) {
 
 
 // //function firePlots() {
-//     // plot style options
-//     const colorBackground = "#222";
-//     const colorPlotBackground = "black";
-//     const colorFont = "#f9736c";
-//     const titleFontSize = 26;
-//     const axisTitleFontSize = 18;
-//     const config = {responsive: true};
+    // plot style options
+    const colorBackground = "#222";
+    const colorPlotBackground = "black";
+    const colorFont = "#f9736c";
+    const titleFontSize = 26;
+    const axisTitleFontSize = 18;
+    const config = {responsive: true};
+
+    let data = [
+        { Year: "2022", Fires: 68988.00, Acres: 7577183.00, Total: 3549000000 },
+        { Year: "2021", Fires: 58985.00, Acres: 7125643.00, Total: 4389000000 },
+        { Year: "2020", Fires: 58950.00, Acres: 10122336.00, Total: 2274000000 },
+        { Year: "2019", Fires: 50477.00, Acres: 4664364.00, Total: 1590000000 },
+        { Year: "2018", Fires: 58083.00, Acres: 8767492.00, Total: 3143256000 },
+        { Year: "2017", Fires: 71499.00, Acres: 10026086.00, Total: 2918165000 },
+        { Year: "2016", Fires: 67595.00, Acres: 5503538.00, Total: 1975545000 },
+        { Year: "2015", Fires: 68151.00, Acres: 10125149.00, Total: 2130543000 },
+        { Year: "2014", Fires: 63212.00, Acres: 3595613.00, Total: 1522149000 },
+        { Year: "2013", Fires: 47579.00, Acres: 4319546.00, Total: 1740934000 },
+        { Year: "2012", Fires: 67774.00, Acres: 9326238.00, Total: 1902446000 },
+        { Year: "2011", Fires: 74126.00, Acres: 8711367.00, Total: 1374525000 },
+        { Year: "2010", Fires: 71971.00, Acres: 3422724.00, Total: 809499000 },
+        { Year: "2009", Fires: 78792.00, Acres: 5921786.00, Total: 920529000 },
+        { Year: "2008", Fires: 78979.00, Acres: 5292468.00, Total: 1585856000 },
+        { Year: "2007", Fires: 85705.00, Acres: 9328045.00, Total: 1620145000 },
+        { Year: "2006", Fires: 96385.00, Acres: 9873745.00, Total: 1704477000 },
+        { Year: "2005", Fires: 66753.00, Acres: 8689389.00, Total: 818954000 },
+        { Year: "2004", Fires: 65461.00, Acres: 8097880.00, Total: 1007244000 },
+        { Year: "2003", Fires: 63629.00, Acres: 3960842.00, Total: 1327138000 },
+        { Year: "2002", Fires: 73457.00, Acres: 7184712.00, Total: 1674040000 },
+        { Year: "2001", Fires: 84079.00, Acres: 3570911.00, Total: 952696000 }
+    ];
+
+    let years = data.map(item => item.Year);
+    let fires = data.map(item => item.Fires);
+    let total = data.map(item => item.Total);
+    let acres = data.map(item => item.Acres);
+
+    let bubbleSize = fires.map(value => {
+        return 20 + (value - Math.min.apply(null, fires)) /
+            (Math.max.apply(null, fires) - Math.min.apply(null, fires)) * 80;
+    });
+
+
+    let textData = data.map(item => `Year: ${item.Year}<br>Fires: ${item.Fires}`);
+
+
+    let trace = {
+        x: years,
+        y: total,
+        text: textData,
+        mode: 'markers',
+        marker: {
+            size: bubbleSize,
+            sizemode: 'diameter',
+            color: '#f48404',
+            opacity: 0.7
+        }
+    };
+
+    let layout = {
+        title: 'Cost of Wildfires vs Wildfire Amount',
+        font:{
+                size: axisTitleFontSize,
+                family: 'Arial, Helvetica, sans-serif'
+             },
+        xaxis:{ 
+                title: 'Years',
+                zeroline: false,
+                gridwidth: 2
+             },
+        yaxis: { title: 'Total Cost' },
+        bargap :0.05,
+        margin: {t: 50, b: 130, l: 60, r: 20},
+        plot_bgcolor: colorPlotBackground,
+        paper_bgcolor: colorBackground,
+        font: { color: colorFont },
+        titlefont: { size: titleFontSize }
+        
+    };
+
+    let chartData = [trace];
+
+    Plotly.newPlot("Bubble", chartData, layout);
 
 //     // Humans vs. Nature (Lightning) plot
 //     let humanTrace = {
