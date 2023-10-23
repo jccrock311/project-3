@@ -4,8 +4,8 @@
 const YearData = [];
 const AlaskaHuman = [];
 const AlaskaNature = [];
-const NorthwestHuman= [];
-const NorthwestNature= [];
+const NorthwestHuman = [];
+const NorthwestNature = [];
 const NCaliHuman = [];
 const NCaliNature = [];
 const SCaliHuman = [];
@@ -27,8 +27,6 @@ const SAreaNature = [];
 const TotalHuman = [];
 const TotalNature = [];
 
-
-
 // let fireData;
 
 // //filtering the year
@@ -40,8 +38,6 @@ const TotalNature = [];
 // //     } else {
 // //         filterData = fireData.filter(years => years == years);
 // //     }
-
-
 
 //import CSV
 const uploadconfirm = document.getElementById('uploadconfirm').
@@ -83,12 +79,15 @@ const uploadconfirm = document.getElementById('uploadconfirm').
                     TotalNature.push(results.data[i].TotalNature);
                 }
             }
-
         });
     });
 
-    const datas = {
-        labels: ['Humans', 'Nature'],
+    
+    console.log(Chart);
+    
+    document.addEventListener('DOMContentLoaded', function () {
+        const datas = {
+            labels: ['Humans', 'Nature'],
             datasets: [
                 {
                     label: ['Number of Human Fires', 'Number of Natural Fires'],
@@ -98,79 +97,135 @@ const uploadconfirm = document.getElementById('uploadconfirm').
                     borderWidth: [2, 2]
                 },
             ]
-    };
-
-    const config = {
-        type: 'bar',
-        data: datas, // Corrected
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+        };
+    
+        const config = {
+            type: 'bar',
+            data: datas,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    };
+        };
     
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
+        const checkChart = new Chart(
+            document.getElementById('checkChart'),
+            config
+        );
     
-
-    function updateChart(label){
-        if (label === "AlaskaHuman") {
-            myChart.data.datasets[0].data = AlaskaHuman;
-            myChart.data.datasets[1].data = AlaskaNature;
-        }
-        if (label === "NorthwestHuman") {
-            myChart.data.datasets[0].data = NorthwestHuman;
-            myChart.data.datasets[1].data = NorthwestNature;
-        }
-        if (label === "NCaliData") {
-            myChart.data.datasets[0].data = NCaliHuman;
-            myChart.data.datasets[1].data = NCaliNature;
-        }
-        if (label === "SCaliData") {
-            myChart.data.datasets[0].data = SCaliHuman;
-            myChart.data.datasets[1].data = SCaliNature;
-        }
-        if (label === "NRockiesData") {
-            myChart.data.datasets[0].data = NRockiesHuman;
-            myChart.data.datasets[1].data = NRockiesNature;
-        }
-        if (label === "GreatBasinData") {
-            myChart.data.datasets[0].data = GreatBasinHuman;
-            myChart.data.datasets[1].data = GreatBasinNature;
-        }
-        if (label === "WGreatBasinData") {
-            myChart.data.datasets[0].data = WGreatBasinHuman;
-            myChart.data.datasets[1].data = WGreatBasinNature;
-        }
-        if (label === "SouthwestData") {
-            myChart.data.datasets[0].data = SouthwestHuman;
-            myChart.data.datasets[1].data = SouthwestNature;
-        }
-        if (label === "RockyMountainsData") {
-            myChart.data.datasets[0].data = RockyMountainsHuman;
-            myChart.data.datasets[1].data = RockyMountainsNature;
-        }
-        if (label === "EAreaData") {
-            myChart.data.datasets[0].data = EAreaHuman;
-            myChart.data.datasets[1].data = EAreaNature;
-        }
-        if (label === "SAreaData") {
-            myChart.data.datasets[0].data = SAreaHuman;
-            myChart.data.datasets[1].data = SAreaNature;
-        }
-        if (label === "TotalData") {
-            myChart.data.datasets[0].data = TotalHuman;
-            myChart.data.datasets[1].data = TotalNature;
-        }
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    
+        function updateChart(selectedRegion) {
+            // Get the selected year
+            const selectedYear = document.getElementById('year').value;
         
-        myChart.update();
-    };
+            // If no year is selected, return
+            if (selectedYear === '---') {
+                alert('Please choose a year.');
+                return;
+            }
+        
+            // Load the CSV file based on the selected year
+            const csvFilePath = `../data/Human-Nature-Acreage-Totals-${selectedYear}.csv`;
+        
+            Papa.parse(csvFilePath, {
+                download: true,
+                header: true,
+                dynamicTyping: true,
+                complete: function (result) {
+                    // Filter data for the selected region and year
+                    const filteredData = result.data.filter(item => item['Year'] == selectedYear);
+        
+                    // Get the labels (regions) and values for the selected region
+                    const labels = Object.keys(filteredData[0]).slice(1); // Exclude 'Year' column
+                    const values = filteredData[0][selectedRegion];
+        
+                    // Create a Chart.js bar chart
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    const myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: `${selectedRegion} - ${selectedYear}`,
+                                data: values,
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        }
 
+
+function updateChart(label) {
+    if (label === "AlaskaHuman") {
+        myChart.data.datasets[0].data = AlaskaHuman;
+        myChart.data.datasets[1].data = AlaskaNature;
+    }
+    if (label === "NorthwestHuman") {
+        myChart.data.datasets[0].data = NorthwestHuman;
+        myChart.data.datasets[1].data = NorthwestNature;
+    }
+    if (label === "NCaliData") {
+        myChart.data.datasets[0].data = NCaliHuman;
+        myChart.data.datasets[1].data = NCaliNature;
+    }
+    if (label === "SCaliData") {
+        myChart.data.datasets[0].data = SCaliHuman;
+        myChart.data.datasets[1].data = SCaliNature;
+    }
+    if (label === "NRockiesData") {
+        myChart.data.datasets[0].data = NRockiesHuman;
+        myChart.data.datasets[1].data = NRockiesNature;
+    }
+    if (label === "GreatBasinData") {
+        myChart.data.datasets[0].data = GreatBasinHuman;
+        myChart.data.datasets[1].data = GreatBasinNature;
+    }
+    if (label === "WGreatBasinData") {
+        myChart.data.datasets[0].data = WGreatBasinHuman;
+        myChart.data.datasets[1].data = WGreatBasinNature;
+    }
+    if (label === "SouthwestData") {
+        myChart.data.datasets[0].data = SouthwestHuman;
+        myChart.data.datasets[1].data = SouthwestNature;
+    }
+    if (label === "RockyMountainsData") {
+        myChart.data.datasets[0].data = RockyMountainsHuman;
+        myChart.data.datasets[1].data = RockyMountainsNature;
+    }
+    if (label === "EAreaData") {
+        myChart.data.datasets[0].data = EAreaHuman;
+        myChart.data.datasets[1].data = EAreaNature;
+    }
+    if (label === "SAreaData") {
+        myChart.data.datasets[0].data = SAreaHuman;
+        myChart.data.datasets[1].data = SAreaNature;
+    }
+    if (label === "TotalData") {
+        myChart.data.datasets[0].data = TotalHuman;
+        myChart.data.datasets[1].data = TotalNature;
+    }
+
+    myChart.update();
+};
+});
 
 
 // //function firePlots() {
