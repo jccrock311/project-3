@@ -428,54 +428,6 @@ const uploadconfirm = document.getElementById('uploadconfirm').
 //}
 
 
-// Logic.js
-
-$(document).ready(function() {
-    // Make an AJAX request to get your CSV data (if not already loaded)
-    $.ajax({
-        url: 'project-3/data/Latitude_and_Longitude.csv', // Replace with the actual URL to your CSV file
-        dataType: 'text',
-        success: function(data) {
-            createMarkers(parseCSV(data));
-        },
-        error: function(error) {
-            console.log("Error:", error);
-        }
-    });
-
-    // Function to parse CSV data and create markers on the map
-    function parseCSV(csvData) {
-        // Assuming your CSV has latitude and longitude columns
-        var rows = csvData.split('\n');
-        var markers = [];
-
-        for (var i = 1; i < rows.length; i++) { // Start from 1 to skip the header
-            var cols = rows[i].split(',');
-            var latitude = parseFloat(cols[0]);
-            var longitude = parseFloat(cols[1]);
-            
-            if (!isNaN(latitude) && !isNaN(longitude)) {
-                markers.push([latitude, longitude]);
-            }
-        }
-
-        return markers;
-    }
-
-    function createMarkers(markerData) {
-        var map = L.map('map').setView([37, -95.7], 4);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            maxZoom: 19,
-        }).addTo(map);
-
-        markerData.forEach(function(coordinate) {
-            L.marker(coordinate).addTo(map);
-        });
-    }
-});
-
 
 const url = "http://localhost:5000/api/latitude_and_longitude";
       
