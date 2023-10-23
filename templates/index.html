@@ -11,10 +11,10 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
-    <!-- Leaflet CSS, JavaScript Code, and Heatmap Library -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script type="text/javascript" src="static/js/leaflet-heat.js"></script>
+   <!-- Leaflet CSS, JavaScript Code, and Heatmap Library -->
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+ 
 
     <!-- Papaparse Plug-in -->
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
@@ -43,18 +43,18 @@
                 <hr>
                 <label>Choose U.S. Region:</label>
                 <p>
-                <button onclick=updateChart(AlaskaHuman)>Alaska</button>
-                <button onclick=updateChart(NorthwestHuman)>Northwest</button>
-                <button onclick=updateChart(NCaliHuman)>Northern California</button>
-                <button onclick=updateChart(SCaliHuman)>Southern California</button>
-                <button onclick=updateChart(NRockiesHuman)>Northern Rockies</button>
-                <button onclick=updateChart(GreatBasinHuman)>Great Basin</button>
-                <button onclick=updateChart(WGreatBasinHuman)>Western Great Basin</button>
-                <button onclick=updateChart(SouthwestHuman)>Southwest</button>
-                <button onclick=updateChart(RockyMountainsHuman)>Rocky Mountains</button>
-                <button onclick=updateChart(EAreaHuman)>Eastern Area</button>
-                <button onclick=updateChart(SAreaHuman)>Southern Area</button>
-                <button onclick=updateChart(TotalHuman)>Total</button>
+                <button onclick=updateChart('AlaskaHuman')>Alaska</button>
+                <button onclick=updateChart('NorthwestHuman')>Northwest</button>
+                <button onclick=updateChart('NCaliHuman')>Northern California</button>
+                <button onclick=updateChart('SCaliHuman')>Southern California</button>
+                <button onclick=updateChart('NRockiesHuman')>Northern Rockies</button>
+                <button onclick=updateChart('GreatBasinHuman')>Great Basin</button>
+                <button onclick=updateChart('WGreatBasinHuman')>Western Great Basin</button>
+                <button onclick=updateChart('SouthwestHuman')>Southwest</button>
+                <button onclick=updateChart('RockyMountainsHuman')>Rocky Mountains</button>
+                <button onclick=updateChart('EAreaHuman')>Eastern Area</button>
+                <button onclick=updateChart('SAreaHuman')>Southern Area</button>
+                <button onclick=updateChart('TotalHuman')>Total</button>
                 <pre>
         </div>
         <pre>
@@ -79,10 +79,11 @@
 
             <!-- Holds our map -->
             <div id="map"></div>
-    
+
             <!-- Our Personal JS -->
-            <script type="text/javascript" src="../static/js/logic.js"></script>
-            <script type="text/javascript" src="../static/js/years.js"></script>
-            <script type="text/javascript" src="../static/js/leaflet-heat.js"></script>
+<script type="text/javascript" src="../static/js/logic.js"></script>
+<script type="text/javascript" src="../static/js/years.js"></script>
+<script type="text/javascript" src="../static/js/leaflet-heat.js"></script>
+
 </body>
 </html>

@@ -87,7 +87,7 @@ const uploadconfirm = document.getElementById('uploadconfirm').
         });
     });
 
-    const data = {
+    const datas = {
         labels: ['Humans', 'Nature'],
             datasets: [
                 {
@@ -102,7 +102,7 @@ const uploadconfirm = document.getElementById('uploadconfirm').
 
     const config = {
         type: 'bar',
-        data,
+        data: datas, // Corrected
         options: {
             scales: {
                 y: {
@@ -111,60 +111,61 @@ const uploadconfirm = document.getElementById('uploadconfirm').
             }
         }
     };
-
+    
     const myChart = new Chart(
         document.getElementById('myChart'),
         config
     );
+    
 
     function updateChart(label){
         if (label === "AlaskaHuman") {
             myChart.data.datasets[0].data = AlaskaHuman;
-            myChart.data.datasets[0].data = AlaskaNature;
+            myChart.data.datasets[1].data = AlaskaNature;
         }
         if (label === "NorthwestHuman") {
             myChart.data.datasets[0].data = NorthwestHuman;
-            myChart.data.datasets[0].data = NorthwestNature;
+            myChart.data.datasets[1].data = NorthwestNature;
         }
         if (label === "NCaliData") {
             myChart.data.datasets[0].data = NCaliHuman;
-            myChart.data.datasets[0].data = NCaliNature;
+            myChart.data.datasets[1].data = NCaliNature;
         }
         if (label === "SCaliData") {
             myChart.data.datasets[0].data = SCaliHuman;
-            myChart.data.datasets[0].data = SCaliNature;
+            myChart.data.datasets[1].data = SCaliNature;
         }
         if (label === "NRockiesData") {
             myChart.data.datasets[0].data = NRockiesHuman;
-            myChart.data.datasets[0].data = NRockiesNature;
+            myChart.data.datasets[1].data = NRockiesNature;
         }
         if (label === "GreatBasinData") {
             myChart.data.datasets[0].data = GreatBasinHuman;
-            myChart.data.datasets[0].data = GreatBasinNature;
+            myChart.data.datasets[1].data = GreatBasinNature;
         }
         if (label === "WGreatBasinData") {
             myChart.data.datasets[0].data = WGreatBasinHuman;
-            myChart.data.datasets[0].data = WGreatBasinNature;
+            myChart.data.datasets[1].data = WGreatBasinNature;
         }
         if (label === "SouthwestData") {
             myChart.data.datasets[0].data = SouthwestHuman;
-            myChart.data.datasets[0].data = SouthwestNature;
+            myChart.data.datasets[1].data = SouthwestNature;
         }
         if (label === "RockyMountainsData") {
             myChart.data.datasets[0].data = RockyMountainsHuman;
-            myChart.data.datasets[0].data = RockyMountainsNature;
+            myChart.data.datasets[1].data = RockyMountainsNature;
         }
         if (label === "EAreaData") {
             myChart.data.datasets[0].data = EAreaHuman;
-            myChart.data.datasets[0].data = EAreaNature;
+            myChart.data.datasets[1].data = EAreaNature;
         }
         if (label === "SAreaData") {
             myChart.data.datasets[0].data = SAreaHuman;
-            myChart.data.datasets[0].data = SAreaNature;
+            myChart.data.datasets[1].data = SAreaNature;
         }
         if (label === "TotalData") {
             myChart.data.datasets[0].data = TotalHuman;
-            myChart.data.datasets[0].data = TotalNature;
+            myChart.data.datasets[1].data = TotalNature;
         }
         
         myChart.update();
@@ -376,30 +377,46 @@ const uploadconfirm = document.getElementById('uploadconfirm').
 
 // function fireDataMap() {
 
-    //load CSVs with d3
-    let fireCoords = d3.csv(allFires);
-    //let humanFiresTotal = d3.csv(humanFires, function(data){
-    //     console.log(data)
-    // });
-    let humanFiresAcreage = d3.csv(humanAcreage);
-    let natureFiresTotal = d3.csv(natureFires);
-    let natureFiresAcreage = d3.csv(natureAcreage);
+   
 
     //let humanTotal = 
 
 //--------------------------------------------------------------------------------------------------------------------------
 
     // Creating map object
-    // const map = L.map('map', {
-    // //US-Centered
-    // center: [37, -95.7],
-    // zoom: 4
-    // });
+    const map = L.map('map', {
+        //US-Centered
+        center: [37, -95.7],
+        zoom: 4
+        });
+    
+        //Creating tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' 
+        }).addTo(map);
 
-    // //Creating tile layer
-    // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
-    //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' 
-    // }).addTo(map);
+
+ 
+    
+     //load CSVs with d3
+     let one ="csv.file"
+     let parsed_one=d3.csvParse(one);
+     let fireCoords = d3.csv(parsed_one);
+     
+     //let humanFiresTotal = d3.csv(humanFires, function(data){
+     //     console.log(data)
+     // });
+     let two ="csv.file"
+     let parsed_two=d3.csvParse(two);
+     let humanFiresAcreage = d3.csv(parsed_two);
+
+     let three="csv.file"
+     let parsed_three=d3.csvParse(three);
+     let natureFiresTotal = d3.csv(parsed_three);
+
+     let four="csv.file"
+     let parsed_four=d3.csvParse(four);
+     let natureFiresAcreage = d3.csv(parsed_four);
 
     let heatArray = [];
     let circleMarkersOperator = [];
@@ -429,31 +446,48 @@ const uploadconfirm = document.getElementById('uploadconfirm').
 
 
 
-const url = "http://localhost:5000/api/latitude_and_longitude";
-      
-d3.json(url).then(data => {
-    console.log("Fetched data:", data); 
-    console.log("Type of data:", typeof data);
-    console.log("Type of data.locations:", typeof data.locations);
-    
-    if (data && data.locations) {
-        console.log("Data and data.locations exist. Processing...");
-        
-        data.locations.forEach(entry => {
-            const lat = entry.latitude;
-            const lon = entry.longitude;
-            const marker = L.marker([lat, lon]).addTo(myMap);
-            
-        });
-    } else {
-        console.error("Data or data.locations is undefined or null");
-    }
-}).catch(error => {
-    console.error("Error fetching data:", error);
+
+
+var url = "http://localhost:5000/api/latitude_and_longitude";
+
+
+var fuego = L.icon({
+    iconUrl: 'https://www.pngmart.com/files/23/Fire-Icon-PNG-Pic.png', 
+    iconSize: [20, 20], 
+    iconAnchor: [4, 20], 
+    popupAnchor: [0, -62] 
 });
+
+d3.json(url)
+    .then(dataString => {
+        console.log(typeof dataString);
+
+        var data = JSON.parse(dataString);
+        console.log(data);
+
+      
+        if (data && data.length > 0) {
+            console.log( data[0]);
+
+            // Range is approximately 0-4,000
+            for (let i = 0; i < Math.min(3000, data.length); i++) {
+                var entry = data[i];
+                var lat = parseFloat(entry.latitude);
+                var lon = parseFloat(entry.longitude);
+
+                if (!isNaN(lat) && !isNaN(lon)) {
+                   
+                    var marker = L.marker([lat, lon], { icon: fuego }).addTo(map);
+                    
+                }}}});
+
+
+
+
 
 
    
+
 
      /*
      Linear regression plot - Evan
@@ -462,6 +496,8 @@ d3.json(url).then(data => {
 //}
 
 
-
 //fireData();
+
+
+
 
