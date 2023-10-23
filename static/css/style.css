@@ -39,7 +39,7 @@ h1 {
 
 #map {
     margin: auto;
-    height: 600px;
+    height: 500px;
 }
 
 @media screen and (max-width: 1000px) {
