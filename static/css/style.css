@@ -54,6 +54,28 @@ h1 {
     }
 }
 
+/* Create a darkmode map */
+.leaflet-control-layers,
+.leaflet-control-fullscreen,
+.leaflet-control-zoom,
+.leaflet-popup-pane,
+.leaflet-tile-pane {
+  filter: invert(100%) hue-rotate(200deg);
+}
+
+.leaflet-control-attribution.leaflet-control {
+  background: #111;
+  color: #ccc
+}
+
+.leaflet-control-layers-list {
+  font-size: 1.3em;
+}
+
+.leaflet-container {
+  background-color: #333; /*No bright flash */
+}
+
 #selection_row {
     width: 100%;
     font-size: 25px;
@@ -68,8 +90,14 @@ h1 {
 } 
 
 section {
+    position: fixed;
     justify-content: center;
     text-align: center;
-    font-size: 1.2em;
-    padding: 1em 0em;
+    font-size: 0.8em;
+    padding: 2em 0em;
+    width: 100%;
+    bottom: 0;
+    height: 30px;
+    background: #222;
+    color: #f48404;
 }

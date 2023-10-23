@@ -314,59 +314,6 @@ function updateChart(label) {
 
     Plotly.newPlot("Bubble", chartData, layout);
 
-//     // Humans vs. Nature (Lightning) plot
-//     let humanTrace = {
-//         x: ["whatever"],
-//         y: [3],
-//         type: 'bar',
-//         text: [],
-//         marker: {
-//         color: '#f48404'
-//         }
-//     };
-
-//     let natureTrace = {
-//         x: ["Nature (Lightning)"],
-//         y: [8],
-//         type: 'bar',
-//         text: [],
-//         marker: {
-//         color: '#5b1dec'
-//         }
-//     };
-  
-//     let data1 = [humanTrace, natureTrace];
-  
-//     let layout1 = {
-
-//         title: "Human vs. Nature Wildfire Count by Year",
-//         font:{
-//             size: axisTitleFontSize,
-//             family: 'Arial, Helvetica, sans-serif'
-//         },
-
-//         showlegend: false,
-//         xaxis: {
-//             zeroline: false,
-//             gridwidth: 2
-//         },
-
-//         yaxis: {
-//             title: "Total Fires (per year)",
-//             zeroline: false,
-//             gridwidth: 2
-//         },
-
-//         bargap :0.05,
-//         margin: {t: 50, b: 130, l: 60, r: 20},
-//         plot_bgcolor: colorPlotBackground,
-//         paper_bgcolor: colorBackground,
-//         font: { color: colorFont },
-//         titlefont: { size: titleFontSize }
-//     };
-  
-//     Plotly.newPlot('Acreage', data1, layout1);
-
 //     /*
 //      Create plot showcasing human and lightning-caused regional acreage burn per year, also indicating a total amount.
 //      */
@@ -519,7 +466,8 @@ function updateChart(label) {
     const map = L.map('map', {
         //US-Centered
         center: [37, -95.7],
-        zoom: 4
+        zoom: 4,
+        fullscreenControl: { pseudoFullscreen: true }
         });
     
         //Creating tile layer
