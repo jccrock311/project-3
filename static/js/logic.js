@@ -476,6 +476,31 @@ $(document).ready(function() {
     }
 });
 
+
+const url = "http://localhost:5000/api/latitude_and_longitude";
+      
+d3.json(url).then(data => {
+    console.log("Fetched data:", data); 
+    console.log("Type of data:", typeof data);
+    console.log("Type of data.locations:", typeof data.locations);
+    
+    if (data && data.locations) {
+        console.log("Data and data.locations exist. Processing...");
+        
+        data.locations.forEach(entry => {
+            const lat = entry.latitude;
+            const lon = entry.longitude;
+            const marker = L.marker([lat, lon]).addTo(myMap);
+            
+        });
+    } else {
+        console.error("Data or data.locations is undefined or null");
+    }
+}).catch(error => {
+    console.error("Error fetching data:", error);
+});
+
+
    
 
      /*
