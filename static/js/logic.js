@@ -80,20 +80,25 @@ const uploadconfirm = document.getElementById('uploadconfirm').
                 }
             }
         });
+        console.log(AlaskaHuman);
     });
-
-    console.log(AlaskaHuman);
-
 
     
     const data = {
         labels: ['Humans', 'Nature'],
         datasets: [
             {
-                label: ['Number of Human Fires', 'Number of Natural Fires'],
+                label: ['Number of Human Fires'],
                 data: [0, 0],
                 backgroundColor: '#222',
                 borderColor: ['#f48404', '#5b1dec'],
+                borderWidth: [2, 2]
+            },
+            {
+                label: ['Number of Natural Fires'],
+                data: [0, 0],
+                backgroundColor: '#222',
+                borderColor: ['#5b1dec'],
                 borderWidth: [2, 2]
             },
         ]
