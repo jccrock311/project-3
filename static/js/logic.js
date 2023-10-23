@@ -120,58 +120,6 @@ const uploadconfirm = document.getElementById('uploadconfirm').
             document.getElementById('myChart'),
             config
         );
-    
-        function updateChart(selectedRegion) {
-            // Get the selected year
-            const selectedYear = document.getElementById('year').value;
-        
-            // If no year is selected, return
-            if (selectedYear === '---') {
-                alert('Please choose a year.');
-                return;
-            }
-        
-            // Load the CSV file based on the selected year
-            const csvFilePath = `../data/Human-Nature-Acreage-Totals-${selectedYear}.csv`;
-        
-            Papa.parse(csvFilePath, {
-                download: true,
-                header: true,
-                dynamicTyping: true,
-                complete: function (result) {
-                    // Filter data for the selected region and year
-                    const filteredData = result.data.filter(item => item['Year'] == selectedYear);
-        
-                    // Get the labels (regions) and values for the selected region
-                    const labels = Object.keys(filteredData[0]).slice(1); // Exclude 'Year' column
-                    const values = filteredData[0][selectedRegion];
-        
-                    // Create a Chart.js bar chart
-                    const ctx = document.getElementById('myChart').getContext('2d');
-                    const myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: labels,
-                            datasets: [{
-                                label: `${selectedRegion} - ${selectedYear}`,
-                                data: values,
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                borderColor: 'rgba(75, 192, 192, 1)',
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        }
-                    });
-                }
-            });
-        }
-
 
 function updateChart(label) {
     if (label === "AlaskaHuman") {
