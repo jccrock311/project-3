@@ -53,9 +53,20 @@ What are the primary factors influencing the occurrence and severity of  wildfir
 ## Team Members/Tasks:
 
 - [Evan](https://github.com/Emichi25)
+	- Data Gathering/Manipulation
+ 	- Data Scraping
+  	- Flask API Integration
+  	- Leaflet Mapping
 - [Gabriella](https://github.com/Gabriellaade)
+	- SQL
 - [Jonathan](https://github.com/jccrock311)
+	- Data Gathering/Manipulation
+ 	- HTML/CSS
+  	- Flask API Integration
+  	- JavaScript
 - [Juliana](https://github.com/julianac12)
+	- Data Gathering/Manipulation
+ 	- SQL
 
 ## Findings
 
