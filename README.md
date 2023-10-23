@@ -13,22 +13,22 @@ What are the primary factors influencing the occurrence and severity of  wildfir
 ## Key Considerations:
 	
 - Causes (Humans vs. Nature):
-- 	How many wildfires were human-caused, both yearly and in total?
-- 	How many wildfires naturally occurred, and by, what means, both yearly and in total?
+	- How many wildfires were human-caused, both yearly and in total?
+	- How many wildfires naturally occurred, and by, what means, both yearly and in total?
   
 - Location (Regionally):
-- 	Regionally, where did these fires occur?
-- 	Stately, where did these fires occur?
-- 	Ecologically, were the numbers impactful?
+	- Regionally, where did these fires occur?
+	- Stately, where did these fires occur?
+	- Ecologically, were the numbers impactful?
   
 - Spread (Severity, Acreage):
-- 	Which fires were the most severe?
-- 	What was the average spread of fires regionally?
-- 	How many acres in years (and in total) have been burned during our respective timeframe?
+	- Which fires were the most severe?
+	- What was the average spread of fires regionally?
+	- How many acres in years (and in total) have been burned during our respective timeframe?
   
 - Costs (Services, Damages):
-- 	What kinds of costs were the most expensive?
-- 	What was the average cost of fire damage yearly and in total?
+	- What kinds of costs were the most expensive?
+	- What was the average cost of fire damage yearly and in total?
 
 ## Datasets, APIs, and Libraries:
 
