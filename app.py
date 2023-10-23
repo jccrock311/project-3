@@ -22,9 +22,6 @@ def latlon():
     return jsonify(data.to_json(orient="records"))
 
 
-
-
-
 if __name__ == "__main__":
     app.run(debug=True)
     

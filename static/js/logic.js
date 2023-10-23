@@ -48,7 +48,7 @@ const uploadconfirm = document.getElementById('uploadconfirm').
             header: true,
             skipEmptyLines: true,
             complete: function(results) {
-                // console.log(results);
+                console.log(results);
                 // console.log(results.data[0].Year);
 
                 for (i=0; i<results.data.length; i++) {
@@ -82,98 +82,97 @@ const uploadconfirm = document.getElementById('uploadconfirm').
         });
     });
 
+    console.log(AlaskaHuman);
+
+
     
-    console.log(Chart);
+    const data = {
+        labels: ['Humans', 'Nature'],
+        datasets: [
+            {
+                label: ['Number of Human Fires', 'Number of Natural Fires'],
+                data: [0, 0],
+                backgroundColor: '#222',
+                borderColor: ['#f48404', '#5b1dec'],
+                borderWidth: [2, 2]
+            },
+        ]
+    };
     
-    document.addEventListener('DOMContentLoaded', function () {
-        const datas = {
-            labels: ['Humans', 'Nature'],
-            datasets: [
-                {
-                    label: ['Number of Human Fires', 'Number of Natural Fires'],
-                    data: [0, 0],
-                    backgroundColor: '#222',
-                    borderColor: ['#f48404', '#5b1dec'],
-                    borderWidth: [2, 2]
-                },
-            ]
-        };
-    
-        const config = {
-            type: 'bar',
-            data: datas,
-            options: {
-                scales: {
-                    y: {
+    const config = {
+        type: 'bar',
+        data,
+        options: {
+            scales: {
+                y: {
                         beginAtZero: true
-                    }
                 }
             }
-        };
+        }
+    };
     
-        const checkChart = new Chart(
-            document.getElementById('checkChart'),
-            config
-        );
+        // const checkChart = new Chart(
+        //     document.getElementById('checkChart'),
+        //     config
+        // );
     
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
 
-function updateChart(label) {
-    if (label === "AlaskaHuman") {
-        myChart.data.datasets[0].data = AlaskaHuman;
-        myChart.data.datasets[1].data = AlaskaNature;
-    }
-    if (label === "NorthwestHuman") {
-        myChart.data.datasets[0].data = NorthwestHuman;
-        myChart.data.datasets[1].data = NorthwestNature;
-    }
-    if (label === "NCaliData") {
-        myChart.data.datasets[0].data = NCaliHuman;
-        myChart.data.datasets[1].data = NCaliNature;
-    }
-    if (label === "SCaliData") {
-        myChart.data.datasets[0].data = SCaliHuman;
-        myChart.data.datasets[1].data = SCaliNature;
-    }
-    if (label === "NRockiesData") {
-        myChart.data.datasets[0].data = NRockiesHuman;
-        myChart.data.datasets[1].data = NRockiesNature;
-    }
-    if (label === "GreatBasinData") {
-        myChart.data.datasets[0].data = GreatBasinHuman;
-        myChart.data.datasets[1].data = GreatBasinNature;
-    }
-    if (label === "WGreatBasinData") {
-        myChart.data.datasets[0].data = WGreatBasinHuman;
-        myChart.data.datasets[1].data = WGreatBasinNature;
-    }
-    if (label === "SouthwestData") {
-        myChart.data.datasets[0].data = SouthwestHuman;
-        myChart.data.datasets[1].data = SouthwestNature;
-    }
-    if (label === "RockyMountainsData") {
-        myChart.data.datasets[0].data = RockyMountainsHuman;
-        myChart.data.datasets[1].data = RockyMountainsNature;
-    }
-    if (label === "EAreaData") {
-        myChart.data.datasets[0].data = EAreaHuman;
-        myChart.data.datasets[1].data = EAreaNature;
-    }
-    if (label === "SAreaData") {
-        myChart.data.datasets[0].data = SAreaHuman;
-        myChart.data.datasets[1].data = SAreaNature;
-    }
-    if (label === "TotalData") {
-        myChart.data.datasets[0].data = TotalHuman;
-        myChart.data.datasets[1].data = TotalNature;
-    }
+    function updateChart(label) {
+        if (label === "AlaskaHuman") {
+            myChart.data.datasets[0].data = AlaskaHuman;
+            myChart.data.datasets[1].data = AlaskaNature;
+        }
+        if (label === "NorthwestHuman") {
+            myChart.data.datasets[0].data = NorthwestHuman;
+            myChart.data.datasets[1].data = NorthwestNature;
+        }
+        if (label === "NCaliData") {
+            myChart.data.datasets[0].data = NCaliHuman;
+            myChart.data.datasets[1].data = NCaliNature;
+        }   
+        if (label === "SCaliData") {
+            myChart.data.datasets[0].data = SCaliHuman;
+            myChart.data.datasets[1].data = SCaliNature;
+        }
+        if (label === "NRockiesData") {
+            myChart.data.datasets[0].data = NRockiesHuman;
+            myChart.data.datasets[1].data = NRockiesNature;
+        }
+        if (label === "GreatBasinData") {
+            myChart.data.datasets[0].data = GreatBasinHuman;
+            myChart.data.datasets[1].data = GreatBasinNature;
+        }
+        if (label === "WGreatBasinData") {
+            myChart.data.datasets[0].data = WGreatBasinHuman;
+            myChart.data.datasets[1].data = WGreatBasinNature;
+        }
+        if (label === "SouthwestData") {
+            myChart.data.datasets[0].data = SouthwestHuman;
+            myChart.data.datasets[1].data = SouthwestNature;
+        }
+        if (label === "RockyMountainsData") {
+            myChart.data.datasets[0].data = RockyMountainsHuman;
+            myChart.data.datasets[1].data = RockyMountainsNature;
+        }
+        if (label === "EAreaData") {
+            myChart.data.datasets[0].data = EAreaHuman;
+            myChart.data.datasets[1].data = EAreaNature;
+        }
+        if (label === "SAreaData") {
+            myChart.data.datasets[0].data = SAreaHuman;
+            myChart.data.datasets[1].data = SAreaNature;
+        }
+        if (label === "TotalData") {
+            myChart.data.datasets[0].data = TotalHuman;
+            myChart.data.datasets[1].data = TotalNature;
+        }
 
-    myChart.update();
-};
-});
+        myChart.update();
+    };
 
 
 // //function firePlots() {
@@ -183,9 +182,9 @@ function updateChart(label) {
     const colorFont = "#f9736c";
     const titleFontSize = 26;
     const axisTitleFontSize = 18;
-    const config = {responsive: true};
+    const config2 = {responsive: true};
 
-    let data = [
+    let data2 = [
         { Year: "2022", Fires: 68988.00, Acres: 7577183.00, Total: 3549000000 },
         { Year: "2021", Fires: 58985.00, Acres: 7125643.00, Total: 4389000000 },
         { Year: "2020", Fires: 58950.00, Acres: 10122336.00, Total: 2274000000 },
@@ -210,10 +209,10 @@ function updateChart(label) {
         { Year: "2001", Fires: 84079.00, Acres: 3570911.00, Total: 952696000 }
     ];
 
-    let years = data.map(item => item.Year);
-    let fires = data.map(item => item.Fires);
-    let total = data.map(item => item.Total);
-    let acres = data.map(item => item.Acres);
+    let years2 = data2.map(item => item.Year);
+    let fires = data2.map(item => item.Fires);
+    let total = data2.map(item => item.Total);
+    let acres = data2.map(item => item.Acres);
 
     let bubbleSize = fires.map(value => {
         return 20 + (value - Math.min.apply(null, fires)) /
@@ -221,11 +220,11 @@ function updateChart(label) {
     });
 
 
-    let textData = data.map(item => `Year: ${item.Year}<br>Fires: ${item.Fires}`);
+    let textData = data2.map(item => `Year: ${item.Year}<br>Fires: ${item.Fires}`);
 
 
     let trace = {
-        x: years,
+        x: years2,
         y: total,
         text: textData,
         mode: 'markers',
@@ -325,88 +324,8 @@ function updateChart(label) {
 
 
 
-//     /*
-//      Create plot that showcases the amount of regional fires occured (in given year) compared to total acreage burned, 
-//      all in reference to the total cost of the fires.
-//      */
-
-//     let bubbleTrace = {
-//         x: [5, 4, 4], //total fires
-//         y: [5, 5, 63], //total acreage
-//         text: ['Region1', 'Region2', 'Region3'], //which region
-//         mode: 'markers',
-//         marker: {
-//           color: ['#5b1dec', '#eee',  '#eee2'],
-//           size: [12, 16, 35] //total cost reference
-//         }
-//       };
-      
-//       let data3 = [bubbleTrace];
-      
-//       let layout3 = {
-//         title: 'Total Regional Fires Compared to Acreage Burned and Cost (per year)',
-//         xaxis: {
-//             title: "Total Fires"
-//         },
-//         yaxis: {
-//             title: "Total Acreage"
-//         },
-//         showlegend: true,
-//         bargap :0.05,
-//         margin: {t: 50, b: 50, l: 60, r: 20},
-//         plot_bgcolor: colorPlotBackground,
-//         paper_bgcolor: colorBackground,
-//         font: { color: colorFont },
-//         titlefont: { size: titleFontSize }
-//       }; //legend??
-      
-//       Plotly.newPlot('Bubble', data3, layout3);
-    
-
-
-
-    // let regionFiresCost = {}
-
-    // // loop through all the data calculate values our plots need
-    // filterData.forEach(fire => {
-    //     if (fire.HumansCount >= 0) { humanNatureFires.Humans++ }
-    //     if (fire.NatureCount >= 0) { humanNatureFires.Nature++ }
-
-    //     humanNatureAcreage[fire.StatusTypeID]++;
-
-    //     // set operator data value
-    //     // if key does not exist yet, create it then increase count
-    //     regionFiresCost[fire.OperatorID] = regionFiresCost[fire.OperatorID] || 0;
-    //     regionFiresCost[fire.OperatorID]++;
-    // });
-
-
-    // // create Array of objects for operator data
-    // let regionArray = [];
-    // // fill array by looping through operator data
-    // for (const [key, value] of Object.entries(regionFiresCost)) {
-    //     // select the correct operator from reference data
-    //     let operatorObject = referenceData.OperatorTypes.filter(operator => operator.ID == key)[0];
-    //     regionArray.push([operatorObject.Title, value]);
-    // }
-    // // sort Operator Data from highest to lowest (descending)
-    // regionArray.sort((a, b) => b[1] - a[1]);
-
-
-    // let calculatedData = {
-    //     TotalFires: humanNatureFires,
-    //     RegionFires: humanNatureAcreage,
-    //     RegionFires: regionArray
-    // }
-
-    // return calculatedData;
-
-
 // function fireDataMap() {
 
-   
-
-    //let humanTotal = 
 
 //--------------------------------------------------------------------------------------------------------------------------
 
@@ -426,25 +345,25 @@ function updateChart(label) {
 
  
     
-     //load CSVs with d3
-     let one ="csv.file"
-     let parsed_one=d3.csvParse(one);
-     let fireCoords = d3.csv(parsed_one);
+    //load CSVs with d3
+    let one ="csv.file"
+    let parsed_one=d3.csvParse(one);
+    let fireCoords = d3.csv(parsed_one);
      
-     //let humanFiresTotal = d3.csv(humanFires, function(data){
-     //     console.log(data)
-     // });
-     let two ="csv.file"
-     let parsed_two=d3.csvParse(two);
-     let humanFiresAcreage = d3.csv(parsed_two);
+    //let humanFiresTotal = d3.csv(humanFires, function(data){
+    //     console.log(data)
+    // });
+    let two ="csv.file"
+    let parsed_two=d3.csvParse(two);
+    let humanFiresAcreage = d3.csv(parsed_two);
 
-     let three="csv.file"
-     let parsed_three=d3.csvParse(three);
-     let natureFiresTotal = d3.csv(parsed_three);
+    let three="csv.file"
+    let parsed_three=d3.csvParse(three);
+    let natureFiresTotal = d3.csv(parsed_three);
 
-     let four="csv.file"
-     let parsed_four=d3.csvParse(four);
-     let natureFiresAcreage = d3.csv(parsed_four);
+    let four="csv.file"
+    let parsed_four=d3.csvParse(four);
+    let natureFiresAcreage = d3.csv(parsed_four);
 
     let heatArray = [];
     let circleMarkersOperator = [];
