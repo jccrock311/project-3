@@ -220,12 +220,18 @@ const uploadconfirm = document.getElementById('uploadconfirm').
     let acres = data2.map(item => item.Acres);
 
     let bubbleSize = fires.map(value => {
-        return 20 + (value - Math.min.apply(null, fires)) /
+        return 10 + (value - Math.min.apply(null, fires)) /
             (Math.max.apply(null, fires) - Math.min.apply(null, fires)) * 80;
+    });
+
+    let bubbleSize2 = acres.map(value => {
+        return 10 + (value - Math.min.apply(null, acres)) /
+            (Math.max.apply(null, acres) - Math.min.apply(null, acres)) * 80;
     });
 
 
     let textData = data2.map(item => `Year: ${item.Year}<br>Fires: ${item.Fires}`);
+    let textData2 = data2.map(item => `Year: ${item.Year}<br>Acres: ${item.Acres}`);
 
 
     let trace = {
@@ -237,7 +243,20 @@ const uploadconfirm = document.getElementById('uploadconfirm').
             size: bubbleSize,
             sizemode: 'diameter',
             color: '#f48404',
-            opacity: 0.7
+            opacity: 0.8
+        }
+    };
+
+    let trace2 = {
+        x: years2,
+        y: total,
+        text: textData2,
+        mode: 'markers',
+        marker: {
+            size: bubbleSize2,
+            sizemode: 'diameter',
+            color: '#5b1dec',
+            opacity: 0.8
         }
     };
 
@@ -254,7 +273,7 @@ const uploadconfirm = document.getElementById('uploadconfirm').
              },
         yaxis: { title: 'Total Cost' },
         bargap :0.05,
-        margin: {t: 50, b: 130, l: 60, r: 20},
+        margin: {t: 50, b: 40, l: 100, r: 100},
         plot_bgcolor: colorPlotBackground,
         paper_bgcolor: colorBackground,
         font: { color: colorFont },
@@ -262,71 +281,9 @@ const uploadconfirm = document.getElementById('uploadconfirm').
         
     };
 
-    let chartData = [trace];
+    let chartData = [trace, trace2];
 
     Plotly.newPlot("Bubble", chartData, layout);
-
-//     /*
-//      Create plot showcasing human and lightning-caused regional acreage burn per year, also indicating a total amount.
-//      */
-
-//     let donutData = [{
-//         values: [11843, 163580, 190768, 84673, 56045, 270330, 0, 918803, 252562, 68293, 1360728], //human numbers (per year)
-//         labels: ["Alaska", "Nortwest", "Northern California", "Southern California", "Northern Rockies", "Great Basin", 
-//                 "Western Great Basin", "Southwest", "Rocky Mountains", "Eastern Area", "Southern Area"],
-//         domain: {column: 0},
-//         name: 'Human-Caused Acreage',
-//         hoverinfo: 'label+percent+name',
-//         hole: .4,
-//         type: 'pie'
-//     },{
-//         values: [111, 3124, 24142, 2422, 3452, 31, 1553, 15153, 4122, 2312, 2241], //lightning numbers (per year)
-//         labels: ["Alaska", "Nortwest", "Northern California", "Southern California", "Northern Rockies", "Great Basin", 
-//                 "Western Great Basin", "Southwest", "Rocky Mountains", "Eastern Area", "Southern Area"],
-//         text: 'Nature-Caused Acreage',
-//         domain: {column: 1},
-//         name: 'Nature-Caused Acreage',
-//         hoverinfo: 'label+percent+name',
-//         hole: .4,
-//         type: 'pie'
-//     }];
-      
-//     let layout2 = {
-//         title: 'Human vs. Lightning-Caused Fires (Regional Acreage)',
-//         annotations: [
-//           {
-//             font: {
-//                 size: 25
-//             },
-
-//             showarrow: false,
-//             text: 'Human',
-//             x: 0.21,
-//             y: 0.5
-//           },
-//           {
-//             font: {
-//                 size: 25
-//             },
-
-//             showarrow: false,
-//             text: 'Nature',
-//             x: 0.79,
-//             y: 0.5
-//           }
-//         ],
-        
-//         showlegend: false, //legend?
-//         grid: {rows: 1, columns: 2},
-//         margin: {t: 50, b: 50, l: 60, r: 20},
-//         plot_bgcolor: colorPlotBackground,
-//         paper_bgcolor: colorBackground,
-//         font: { color: colorFont },
-//         titlefont: { size: titleFontSize }
-//     };
-      
-//       Plotly.newPlot('Pie', donutData, layout2);
-
 
 
 // function fireDataMap() {
