@@ -1,10 +1,11 @@
-from flask import Flask, render_template, jsonify, Blueprint
+from flask import Flask, render_template, jsonify
 from flask_cors import CORS
 import sqlite3
 import psycopg2
 import pandas as pd
 
 app = Flask(__name__)
+CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5000"}})
 CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5500"}})
 
 @app.route("/")

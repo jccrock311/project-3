@@ -1,29 +1,34 @@
 // const humanFires = document.getElementById("../data/Human-caused wildfires - Number of fires caused.csv").value;
 // console.log(Papa.parse(humanFires))
 
+//AlaskaHuman, NorthwestHuman, NorthernCaliforniaHuman, SouthernCaliforniaHuman, NorthernRockiesHuman, GreatBasinHuman, WesternGreatBasinHuman, SouthwestHuman, RockyMountainsHuman, EasternAreaHuman, SouthernAreaHuman, TotalHuman, 
+
+//AlaskaNature, NorthwestNature, NorthernCaliforniaNature, SouthernCaliforniaNature, NorthernRockiesNature, GreatBasinNature, WesternGreatBasinNature, SouthwestNature, RockyMountainsNature, EasternAreaNature, SouthernAreaNature, TotalNature, 
+
+
 const YearData = [];
 const AlaskaHuman = [];
 const AlaskaNature = [];
 const NorthwestHuman = [];
 const NorthwestNature = [];
-const NCaliHuman = [];
-const NCaliNature = [];
-const SCaliHuman = [];
-const SCaliNature = [];
-const NRockiesHuman = [];
-const NRockiesNature = [];
+const NorthernCaliforniaHuman = [];
+const NorthernCaliforniaNature = [];
+const SouthernCaliforniaHuman = [];
+const SouthernCaliforniaNature = [];
+const NorthernRockiesHuman = [];
+const NorthernRockiesNature = [];
 const GreatBasinHuman = [];
 const GreatBasinNature = [];
-const WGreatBasinHuman = [];
-const WGreatBasinNature = [];
+const WesternGreatBasinHuman = [];
+const WesternGreatBasinNature = [];
 const SouthwestHuman = [];
 const SouthwestNature = [];
 const RockyMountainsHuman = [];
 const RockyMountainsNature = [];
-const EAreaHuman = [];
-const EAreaNature = [];
-const SAreaHuman = [];
-const SAreaNature = [];
+const EasternAreaHuman = [];
+const EasternAreaNature = [];
+const SouthernAreaHuman = [];
+const SouthernAreaNature = [];
 const TotalHuman = [];
 const TotalNature = [];
 
@@ -57,50 +62,52 @@ const uploadconfirm = document.getElementById('uploadconfirm').
                     AlaskaNature.push(results.data[i].AlaskaNature);
                     NorthwestHuman.push(results.data[i].NorthwestHuman);
                     NorthwestNature.push(results.data[i].NorthwestNature);
-                    NCaliHuman.push(results.data[i].NorthernCaliforniaHuman);
-                    NCaliNature.push(results.data[i].NorthernCaliforniaNature);
-                    SCaliHuman.push(results.data[i].SouthernCaliforniaHuman);
-                    SCaliNature.push(results.data[i].SouthernCaliforniaNature);
-                    NRockiesHuman.push(results.data[i].NorthernRockiesHuman);
-                    NRockiesNature.push(results.data[i].NorthernRockiesNature);
+                    NorthernCaliforniaHuman.push(results.data[i].NorthernCaliforniaHuman);
+                    NorthernCaliforniaNature.push(results.data[i].NorthernCaliforniaNature);
+                    SouthernCaliforniaHuman.push(results.data[i].SouthernCaliforniaHuman);
+                    SouthernCaliforniaNature.push(results.data[i].SouthernCaliforniaNature);
+                    NorthernRockiesHuman.push(results.data[i].NorthernRockiesHuman);
+                    NorthernRockiesNature.push(results.data[i].NorthernRockiesNature);
                     GreatBasinHuman.push(results.data[i].GreatBasinHuman);
                     GreatBasinNature.push(results.data[i].GreatBasinNature);
-                    WGreatBasinHuman.push(results.data[i].WesternGreatBasinHuman);
-                    WGreatBasinNature.push(results.data[i].WesternGreatBasinNature);
+                    WesternGreatBasinHuman.push(results.data[i].WesternGreatBasinHuman);
+                    WesternGreatBasinNature.push(results.data[i].WesternGreatBasinNature);
                     SouthwestHuman.push(results.data[i].SouthwestHuman);
                     SouthwestNature.push(results.data[i].SouthwestNature);
                     RockyMountainsHuman.push(results.data[i].RockyMountainsHuman);
                     RockyMountainsNature.push(results.data[i].RockyMountainsNature);
-                    EAreaHuman.push(results.data[i].EasternAreaHuman);
-                    EAreaNature.push(results.data[i].EasternAreaNature);
-                    SAreaHuman.push(results.data[i].SouthernAreaHuman);
-                    SAreaNature.push(results.data[i].SouthernAreaNature);
+                    EasternAreaHuman.push(results.data[i].EasternAreaHuman);
+                    EasternAreaNature.push(results.data[i].EasternAreaNature);
+                    SouthernAreaHuman.push(results.data[i].SouthernAreaHuman);
+                    SouthernAreaNature.push(results.data[i].SouthernAreaNature);
                     TotalHuman.push(results.data[i].TotalHuman);
                     TotalNature.push(results.data[i].TotalNature);
                 }
             }
         });
-        console.log(AlaskaHuman);
+        //console.log(AlaskaHuman);
+        //console.log(AlaskaNature);
     });
 
     
     const data = {
-        labels: ['Humans', 'Nature'],
+        labels: ['Alaska','Northwest', 'Northern California', 'Southern California', 'Northern Rockies', 'Great Basin', 'Western Great Basin', 'Southwest', 'Rocky Mountains', 'Eastern Area', 'Southern Area'],
         datasets: [
             {
                 label: ['Number of Human Fires'],
-                data: [0, 0],
+                data: AlaskaHuman,
                 backgroundColor: '#222',
                 borderColor: ['#f48404', '#5b1dec'],
                 borderWidth: [2, 2]
             },
             {
                 label: ['Number of Natural Fires'],
-                data: [0, 0],
+                data: AlaskaNature, 
                 backgroundColor: '#222',
                 borderColor: ['#5b1dec'],
                 borderWidth: [2, 2]
             },
+          
         ]
     };
     
@@ -124,58 +131,63 @@ const uploadconfirm = document.getElementById('uploadconfirm').
     const myChart = new Chart(
         document.getElementById('myChart'),
         config
+        
     );
 
+    console.log(AlaskaHuman);
+    console.log(AlaskaNature);
+
     function updateChart(label) {
+
+    
         if (label === "AlaskaHuman") {
             myChart.data.datasets[0].data = AlaskaHuman;
             myChart.data.datasets[1].data = AlaskaNature;
         }
-        if (label === "NorthwestHuman") {
+       else if (label === "NorthwestHuman") {
             myChart.data.datasets[0].data = NorthwestHuman;
             myChart.data.datasets[1].data = NorthwestNature;
         }
-        if (label === "NCaliData") {
-            myChart.data.datasets[0].data = NCaliHuman;
-            myChart.data.datasets[1].data = NCaliNature;
+        else if (label === "NorthernCaliforniaHuman") {
+            myChart.data.datasets[0].data = NorthernCaliforniaHuman;
+            myChart.data.datasets[1].data = NorthernCaliforniaNature;
         }   
-        if (label === "SCaliData") {
-            myChart.data.datasets[0].data = SCaliHuman;
-            myChart.data.datasets[1].data = SCaliNature;
+        else if (label === "SouthernCaliforniaHuman") {
+            myChart.data.datasets[0].data = SouthernCaliforniaHuman;
+            myChart.data.datasets[1].data = SouthernCaliforniaNature;
         }
-        if (label === "NRockiesData") {
-            myChart.data.datasets[0].data = NRockiesHuman;
-            myChart.data.datasets[1].data = NRockiesNature;
+        else if (label === "NorthernRockiesHuman") {
+            myChart.data.datasets[0].data = NorthernRockiesHuman;
+            myChart.data.datasets[1].data = NorthernRockiesNature;
         }
-        if (label === "GreatBasinData") {
+        else if (label === "GreatBasinHuman") {
             myChart.data.datasets[0].data = GreatBasinHuman;
             myChart.data.datasets[1].data = GreatBasinNature;
         }
-        if (label === "WGreatBasinData") {
-            myChart.data.datasets[0].data = WGreatBasinHuman;
-            myChart.data.datasets[1].data = WGreatBasinNature;
+        else if (label === "WesternGreatBasinHuman") {
+            myChart.data.datasets[0].data = WesternGreatBasinHuman;
+            myChart.data.datasets[1].data = WesternGreatBasinNature;
         }
-        if (label === "SouthwestData") {
+        else if (label === "SouthwestHuman") {
             myChart.data.datasets[0].data = SouthwestHuman;
             myChart.data.datasets[1].data = SouthwestNature;
         }
-        if (label === "RockyMountainsData") {
+        else if (label === "RockyMountainsHuman") {
             myChart.data.datasets[0].data = RockyMountainsHuman;
             myChart.data.datasets[1].data = RockyMountainsNature;
         }
-        if (label === "EAreaData") {
-            myChart.data.datasets[0].data = EAreaHuman;
-            myChart.data.datasets[1].data = EAreaNature;
+        else if (label === "EasternAreaHuman") {
+            myChart.data.datasets[0].data = EasternAreaHuman;
+            myChart.data.datasets[1].data = EasternAreaNature;
         }
-        if (label === "SAreaData") {
-            myChart.data.datasets[0].data = SAreaHuman;
-            myChart.data.datasets[1].data = SAreaNature;
+        else if (label === "SouthernAreaHuman") {
+            myChart.data.datasets[0].data = SouthernAreaHuman;
+            myChart.data.datasets[1].data = SouthernAreaNature;
         }
-        if (label === "TotalData") {
+        else if (label === "TotalHuman") {
             myChart.data.datasets[0].data = TotalHuman;
             myChart.data.datasets[1].data = TotalNature;
         }
-
         myChart.update();
     };
 
@@ -421,7 +433,7 @@ d3.json(url)
         if (data && data.length > 0) {
             console.log( data[0]);
 
-            // Range is approximately 0-4,000
+            // Range is approximately 0-4,000 enitres ( aka lat and long coordinates)
             for (let i = 0; i < Math.min(3000, data.length); i++) {
                 var entry = data[i];
                 var lat = parseFloat(entry.latitude);
