@@ -144,7 +144,7 @@ const uploadconfirm = document.getElementById('uploadconfirm').
             myChart.data.datasets[0].data = AlaskaHuman;
             myChart.data.datasets[1].data = AlaskaNature;
         }
-       else if (label === "NorthwestHuman") {
+        else if (label === "NorthwestHuman") {
             myChart.data.datasets[0].data = NorthwestHuman;
             myChart.data.datasets[1].data = NorthwestNature;
         }
@@ -192,7 +192,7 @@ const uploadconfirm = document.getElementById('uploadconfirm').
     };
 
 
-// //function firePlots() {
+// function firePlots() {
     // plot style options
     const colorBackground = "#222";
     const colorPlotBackground = "black";
@@ -251,6 +251,7 @@ const uploadconfirm = document.getElementById('uploadconfirm').
         y: total,
         text: textData,
         mode: 'markers',
+        name: 'Fires',
         marker: {
             size: bubbleSize,
             sizemode: 'diameter',
@@ -264,6 +265,7 @@ const uploadconfirm = document.getElementById('uploadconfirm').
         y: total,
         text: textData2,
         mode: 'markers',
+        name: 'Acres',
         marker: {
             size: bubbleSize2,
             sizemode: 'diameter',
@@ -273,7 +275,7 @@ const uploadconfirm = document.getElementById('uploadconfirm').
     };
 
     let layout = {
-        title: 'Cost of Wildfires vs Wildfire Amount',
+        title: 'Cost of Wildfires vs Wildfire and Acreage Amount',
         font:{
                 size: axisTitleFontSize,
                 family: 'Arial, Helvetica, sans-serif'
@@ -284,13 +286,13 @@ const uploadconfirm = document.getElementById('uploadconfirm').
                 gridwidth: 2
              },
         yaxis: { title: 'Total Cost' },
-        bargap :0.05,
+        bargap: 0.05,
         margin: {t: 50, b: 40, l: 100, r: 100},
         plot_bgcolor: colorPlotBackground,
         paper_bgcolor: colorBackground,
         font: { color: colorFont },
-        titlefont: { size: titleFontSize }
-        
+        titlefont: { size: titleFontSize },
+
     };
 
     let chartData = [trace, trace2];
@@ -298,8 +300,82 @@ const uploadconfirm = document.getElementById('uploadconfirm').
     Plotly.newPlot("Bubble", chartData, layout);
 
 
-// function fireDataMap() {
+    // Pie charts for yearly percentage comparisons 
 
+    var pieData = [
+        {
+            values: fires,
+            labels: years2,
+            domain: {column: 0},
+            name: 'Fires',
+            hoverinfo: 'label+percent+name',
+            hole: .3,
+            type: 'pie'
+        },
+        {
+            values: acres,
+            labels: years2,
+            text: 'Acres',
+            textposition: 'inside',
+            domain: {column: 1},
+            name: 'CO2 Emissions',
+            hoverinfo: 'label+percent+name',
+            hole: .3,
+            type: 'pie'
+        },
+        {
+            values: total,
+            labels: years2,
+            text: 'Costs',
+            textposition: 'inside',
+            domain: {column: 2},
+            name: 'Costs',
+            hoverinfo: 'label+percent+name',
+            hole: .3,
+            type: 'pie'
+        }
+    ];
+      
+      var pieLayout = {
+        title: 'Fire and Acreage Totals (2001-2022)',
+        annotations: [
+          {
+            font: {
+                size: 20
+            },
+            showarrow: false,
+            text: 'Fires',
+            x: 0.139,
+            y: 0.5
+          },
+          {
+            font: {
+                size: 20
+            },
+            showarrow: false,
+            text: 'Acres',
+            x: 0.50,
+            y: 0.5
+          },
+          {
+            font: {
+                size: 20
+            },
+            showarrow: false,
+            text: 'Costs',
+            x: 0.863,
+            y: 0.5
+          }
+        ],
+        paper_bgcolor: colorBackground,
+        font: { color: colorFont },
+        titlefont: { size: titleFontSize },
+        margin: {t: 50, b: 40, l: 100, r: 100},
+        showlegend: false,
+        grid: {rows: 1, columns: 3}
+      };
+      
+    Plotly.newPlot("Pie", pieData, pieLayout);
 
 //--------------------------------------------------------------------------------------------------------------------------
 
@@ -317,7 +393,6 @@ const uploadconfirm = document.getElementById('uploadconfirm').
         }).addTo(map);
 
 
- 
     
     //load CSVs with d3
     let one ="csv.file"
@@ -354,25 +429,10 @@ const uploadconfirm = document.getElementById('uploadconfirm').
 
 //}
 
-// Filters the full data to a given state
-//function createFilterData(state) {
-    //let filterData;
-
-    //if (state == 'USA') {
-        //filterData = fireData;
-    //} else {
-        //filterData = fireData.filter(fire => fire.state == state);
-    //}
-//}
+let url = "http://localhost:5000/api/latitude_and_longitude";
 
 
-
-
-
-var url = "http://localhost:5000/api/latitude_and_longitude";
-
-
-var fuego = L.icon({
+let fuego = L.icon({
     iconUrl: 'https://www.pngmart.com/files/23/Fire-Icon-PNG-Pic.png', 
     iconSize: [20, 20], 
     iconAnchor: [4, 20], 
@@ -383,7 +443,7 @@ d3.json(url)
     .then(dataString => {
         console.log(typeof dataString);
 
-        var data = JSON.parse(dataString);
+        let data = JSON.parse(dataString);
         console.log(data);
 
       
@@ -392,22 +452,18 @@ d3.json(url)
 
             // Range is approximately 0-4,000 enitres ( aka lat and long coordinates)
             for (let i = 0; i < Math.min(3000, data.length); i++) {
-                var entry = data[i];
-                var lat = parseFloat(entry.latitude);
-                var lon = parseFloat(entry.longitude);
+                let entry = data[i];
+                let lat = parseFloat(entry.latitude);
+                let lon = parseFloat(entry.longitude);
 
                 if (!isNaN(lat) && !isNaN(lon)) {
                    
                     var marker = L.marker([lat, lon], { icon: fuego }).addTo(map);
                     
-                }}}});
-
-
-
-
-
-
-   
+                }
+            }
+        }
+    });
 
 
      /*
@@ -418,7 +474,3 @@ d3.json(url)
 
 
 //fireData();
-
-
-
-
