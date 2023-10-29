@@ -5,6 +5,17 @@ html {
     color: #eee;
 }
 
+table {
+    border-collapse: collapse;
+    border: 2px black solid;
+    font: 12px sans-serif;
+}
+
+td {
+    border: 1px black solid;
+    padding: 5px;
+}
+
 body {
     background: #080808;
     color: #f48404;

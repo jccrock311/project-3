@@ -136,7 +136,7 @@ const uploadconfirm = document.getElementById('uploadconfirm').
     console.log(AlaskaHuman);
     console.log(AlaskaNature);
 
-// Note for the acerage file the values are divided by 100 becuase they were too big for the bar graph
+// Note: for the acerage file the values are divided by 100 becuase they were too big for the bar graph
 
     function updateChart(location) {
     
@@ -181,8 +181,8 @@ const uploadconfirm = document.getElementById('uploadconfirm').
         const labeled = labeler(location);
         myChart.data.labels = [labeled];
 
-    myChart.data.datasets[0].text = [labeled];
-    myChart.data.datasets[1].text = [labeled];
+        myChart.data.datasets[0].text = [labeled];
+        myChart.data.datasets[1].text = [labeled];
         
         myChart.update();
     };
@@ -325,7 +325,7 @@ const uploadconfirm = document.getElementById('uploadconfirm').
             text: 'Acres',
             textposition: 'inside',
             domain: {column: 1},
-            name: 'CO2 Emissions',
+            name: 'Acres',
             hoverinfo: 'label+percent+name',
             hole: .3,
             type: 'pie'

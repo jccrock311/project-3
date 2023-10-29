@@ -24,18 +24,6 @@
 
     <!-- Our Personal CSS -->
     <link rel="stylesheet" href="../static/css/style.css">
-    <style>
-        table {
-            border-collapse: collapse;
-            border: 2px black solid;
-            font: 12px sans-serif;
-        }
-
-        td {
-            border: 1px black solid;
-            padding: 5px;
-        }
-    </style>
 </head>
 
 <body>
@@ -47,13 +35,13 @@
         <div id="map"></div>
         <hr>
         <div id="selection_row">   
-            <label for="years">Choose a File from 2022 for Fire Analysis:</label>
-           
-            <input type="file" id="uploadfile" accept=".csv">
-            <button id="uploadconfirm"> Upload File</button>
+            <label for="years">Choose a File for 2022 Fire Analysis:</label>
             <a href="../data/Human-Nature-Wildfire-Totals.csv" download>Fires</a>
             <label>|</label>
             <a href="../data/Human-Nature-Acreage-Totals.csv" download>Acreages</a>
+           
+            <input type="file" id="uploadfile" accept=".csv">
+            <button id="uploadconfirm"> Upload File</button>
             <hr>
             <label>Choose U.S. Region:</label>
             <p>
