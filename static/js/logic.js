@@ -91,7 +91,6 @@ const uploadconfirm = document.getElementById('uploadconfirm').
 
     
     const data = {
-        labels: ['Alaska','Northwest', 'Northern California', 'Southern California', 'Northern Rockies', 'Great Basin', 'Western Great Basin', 'Southwest', 'Rocky Mountains', 'Eastern Area', 'Southern Area'],
         datasets: [
             {
                 label: ['Number of Human Fires'],
@@ -137,59 +136,67 @@ const uploadconfirm = document.getElementById('uploadconfirm').
     console.log(AlaskaHuman);
     console.log(AlaskaNature);
 
-    function updateChart(label) {
 
+
+    function updateChart(location) {
     
-        if (label === "AlaskaHuman") {
+        if (location === "Alaska") {
             myChart.data.datasets[0].data = AlaskaHuman;
             myChart.data.datasets[1].data = AlaskaNature;
-        }
-        else if (label === "NorthwestHuman") {
+        } else if (location === "Northwest") {
             myChart.data.datasets[0].data = NorthwestHuman;
             myChart.data.datasets[1].data = NorthwestNature;
-        }
-        else if (label === "NorthernCaliforniaHuman") {
+        } else if (location === "Northern California") {
             myChart.data.datasets[0].data = NorthernCaliforniaHuman;
             myChart.data.datasets[1].data = NorthernCaliforniaNature;
-        }   
-        else if (label === "SouthernCaliforniaHuman") {
+        } else if (location === "Southern California") {
             myChart.data.datasets[0].data = SouthernCaliforniaHuman;
             myChart.data.datasets[1].data = SouthernCaliforniaNature;
-        }
-        else if (label === "NorthernRockiesHuman") {
+        } else if (location === "Northern Rockies") {
             myChart.data.datasets[0].data = NorthernRockiesHuman;
             myChart.data.datasets[1].data = NorthernRockiesNature;
-        }
-        else if (label === "GreatBasinHuman") {
+        } else if (location === "Great Basin") {
             myChart.data.datasets[0].data = GreatBasinHuman;
             myChart.data.datasets[1].data = GreatBasinNature;
-        }
-        else if (label === "WesternGreatBasinHuman") {
+        } else if (location === "Western Great Basin") {
             myChart.data.datasets[0].data = WesternGreatBasinHuman;
             myChart.data.datasets[1].data = WesternGreatBasinNature;
-        }
-        else if (label === "SouthwestHuman") {
+        } else if (location === "Southwest") {
             myChart.data.datasets[0].data = SouthwestHuman;
             myChart.data.datasets[1].data = SouthwestNature;
-        }
-        else if (label === "RockyMountainsHuman") {
+        } else if (location === "Rocky Mountains") {
             myChart.data.datasets[0].data = RockyMountainsHuman;
             myChart.data.datasets[1].data = RockyMountainsNature;
-        }
-        else if (label === "EasternAreaHuman") {
+        } else if (location === "Eastern Area") {
             myChart.data.datasets[0].data = EasternAreaHuman;
             myChart.data.datasets[1].data = EasternAreaNature;
-        }
-        else if (label === "SouthernAreaHuman") {
+        } else if (location === "Southern Area") {
             myChart.data.datasets[0].data = SouthernAreaHuman;
             myChart.data.datasets[1].data = SouthernAreaNature;
-        }
-        else if (label === "TotalHuman") {
+        } else if (location === "Total") {
             myChart.data.datasets[0].data = TotalHuman;
             myChart.data.datasets[1].data = TotalNature;
         }
+    
+        const labeled = labeler(location);
+        myChart.data.labels = [labeled];
+
+    myChart.data.datasets[0].text = [labeled];
+    myChart.data.datasets[1].text = [labeled];
+        
         myChart.update();
     };
+
+
+
+
+    function labeler(location) {
+       
+        const words = location.split(/(?=[A-Z])/);
+       
+        return words.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    };
+
 
 
 // function firePlots() {
@@ -465,12 +472,3 @@ d3.json(url)
         }
     });
 
-
-     /*
-     Linear regression plot - Evan
-     */
-
-//}
-
-
-//fireData();
