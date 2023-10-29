@@ -1,0 +1,3 @@
+To run the app.py file:
+
+Either click the top right "Play" arrow and click the link on http://127.0.0.1:5000 or go live clicking "Go Live" on the bottom right and launching http://127.0.0.1:5500. Either works. To get the markers to display on the Leaflet map you need to Launch Wildfire project-20231029.dbp and you may need to either refresh the database and I would check if you need to import the data from the Latitude_and_Longitude.csv.
