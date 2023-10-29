@@ -70,6 +70,7 @@ What are the primary factors influencing the occurrence and severity of  wildfir
 
 ## Findings
 
-1. According to our charts, across the past 20 years, human-started wildfires have caused considerably more financial and ecological stresses compared to those started of natural causes.
+1. According to our charts, across the past 20 years, human-started wildfires have caused considerably more financial and ecological stresses spanning all major US regions compared to those started of natural causes.
+2. As the years progress, there is a clear indication that the costs spent on wildfire retention grows exponentially, almost reaching 4x the amount spent in 2021 compared to 2001. This could be indicative of climate change, requiring more resources to keep fires contained, as well as inflation in costs, or a mixture of both.
 
 
