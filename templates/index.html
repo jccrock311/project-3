@@ -24,6 +24,18 @@
 
     <!-- Our Personal CSS -->
     <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 2px black solid;
+            font: 12px sans-serif;
+        }
+
+        td {
+            border: 1px black solid;
+            padding: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,32 +47,8 @@
         <div id="map"></div>
         <hr>
         <div id="selection_row">   
-            <label for="years">Choose Year and File for Fire Analysis:</label>
-            <select id="year">
-                <option value="---">---</option>
-                <option value="21">2001</option>
-                <option value="20">2002</option>
-                <option value="19">2003</option>
-                <option value="18">2004</option>
-                <option value="17">2005</option>
-                <option value="16">2006</option>
-                <option value="15">2007</option>
-                <option value="14">2008</option>
-                <option value="13">2009</option>
-                <option value="12">2010</option>
-                <option value="11">2011</option>
-                <option value="10">2012</option>
-                <option value="9">2013</option>
-                <option value="8">2014</option>
-                <option value="7">2015</option>
-                <option value="6">2016</option>
-                <option value="5">2017</option>
-                <option value="4">2018</option>
-                <option value="3">2019</option>
-                <option value="2">2020</option>
-                <option value="1">2021</option>
-                <option value="0">2022</option>
-            </select>
+            <label for="years">Choose a File from 2022 for Fire Analysis:</label>
+           
             <input type="file" id="uploadfile" accept=".csv">
             <button id="uploadconfirm"> Upload File</button>
             <a href="../data/Human-Nature-Wildfire-Totals.csv" download>Fires</a>

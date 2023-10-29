@@ -136,7 +136,7 @@ const uploadconfirm = document.getElementById('uploadconfirm').
     console.log(AlaskaHuman);
     console.log(AlaskaNature);
 
-
+// Note for the acerage file the values are divided by 100 becuase they were too big for the bar graph
 
     function updateChart(location) {
     
